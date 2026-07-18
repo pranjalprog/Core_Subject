@@ -78,7 +78,11 @@ public class Main {
 ```text
 101 Rahul
 ```
-
+```
+` static `
+Means the method belongs to the class, not to an object.
+The JVM can call main() without creating an object of the class.
+```
 ---
 
 # 3. Inheritance
