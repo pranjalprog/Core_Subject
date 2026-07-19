@@ -128,7 +128,7 @@ N entities involved.
 ---
 
 # 7. Constraints
-
+Constraints are rules applied to a table to ensure the accuracy, validity, and integrity of the data.
 ## Domain Constraint
 Value valid domain se hi aani chahiye.
 
