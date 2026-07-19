@@ -931,3 +931,696 @@ After `ROLLBACK TO sp1`, the second update is undone, but the first update is ke
 - **DML** → Change Data (`INSERT`, `UPDATE`, `DELETE`)
 - **DCL** → Control Permissions (`GRANT`, `REVOKE`)
 - **TCL** → Manage Transactions (`START TRANSACTION`, `COMMIT`, `ROLLBACK`, `SAVEPOINT`)s
+
+# SQL Joins
+
+## Definition
+
+A **JOIN** is used to **combine rows from two or more tables based on a related column**.
+
+---
+
+# Types of Joins
+
+| Join | Purpose |
+|------|---------|
+| `INNER JOIN` | Returns only matching rows |
+| `LEFT JOIN` | Returns all rows from the left table and matching rows from the right table |
+| `RIGHT JOIN` | Returns all rows from the right table and matching rows from the left table |
+| `FULL OUTER JOIN` | Returns all rows from both tables |
+| `CROSS JOIN` | Returns all possible combinations of rows |
+| `SELF JOIN` | Joins a table with itself |
+
+---
+
+# Sample Tables
+
+### Student
+
+| StudentID | Name | CourseID |
+|-----------|------|----------|
+| 1 | Rahul | 101 |
+| 2 | Aman | 102 |
+| 3 | Priya | 103 |
+| 4 | Neha | 104 |
+
+### Course
+
+| CourseID | CourseName |
+|----------|------------|
+| 101 | Java |
+| 102 | DBMS |
+| 105 | Python |
+
+---
+
+# 1. INNER JOIN
+
+## Definition
+
+Returns **only the matching records** from both tables.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+INNER JOIN Course
+ON Student.CourseID = Course.CourseID;
+```
+
+### Output
+
+| Name | CourseName |
+|------|------------|
+| Rahul | Java |
+| Aman | DBMS |
+
+> Only matching `CourseID`s are returned.
+
+---
+
+# 2. LEFT JOIN (LEFT OUTER JOIN)
+
+## Definition
+
+Returns **all rows from the left table** and matching rows from the right table.
+
+If no match exists, `NULL` is returned for the right table.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+LEFT JOIN Course
+ON Student.CourseID = Course.CourseID;
+```
+
+### Output
+
+| Name | CourseName |
+|------|------------|
+| Rahul | Java |
+| Aman | DBMS |
+| Priya | NULL |
+| Neha | NULL |
+
+> All students are shown.
+
+---
+
+# 3. RIGHT JOIN (RIGHT OUTER JOIN)
+
+## Definition
+
+Returns **all rows from the right table** and matching rows from the left table.
+
+If no match exists, `NULL` is returned for the left table.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+RIGHT JOIN Course
+ON Student.CourseID = Course.CourseID;
+```
+
+### Output
+
+| Name | CourseName |
+|------|------------|
+| Rahul | Java |
+| Aman | DBMS |
+| NULL | Python |
+
+> All courses are shown.
+
+---
+
+# 4. FULL OUTER JOIN
+
+## Definition
+
+Returns **all rows from both tables**.
+
+Matching rows are combined, and non-matching rows contain `NULL`.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+FULL OUTER JOIN Course
+ON Student.CourseID = Course.CourseID;
+```
+
+### Output
+
+| Name | CourseName |
+|------|------------|
+| Rahul | Java |
+| Aman | DBMS |
+| Priya | NULL |
+| Neha | NULL |
+| NULL | Python |
+
+---
+
+# 5. CROSS JOIN
+
+## Definition
+
+Returns **every row of the first table combined with every row of the second table**.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+CROSS JOIN Course;
+```
+
+If:
+
+- Student = **4 rows**
+- Course = **3 rows**
+
+Output rows:
+
+```text
+4 × 3 = 12 rows
+```
+
+---
+
+# 6. SELF JOIN
+
+## Definition
+
+A **SELF JOIN** joins a table with itself.
+
+It is useful when records in the same table are related.
+
+### Example Table
+
+| EmpID | Employee | ManagerID |
+|-------|----------|-----------|
+| 1 | Rahul | NULL |
+| 2 | Aman | 1 |
+| 3 | Priya | 1 |
+
+### Query
+
+```sql
+SELECT E.Employee,
+       M.Employee AS Manager
+FROM Employee E
+JOIN Employee M
+ON E.ManagerID = M.EmpID;
+```
+
+### Output
+
+| Employee | Manager |
+|----------|---------|
+| Aman | Rahul |
+| Priya | Rahul |
+
+---
+
+# Quick Revision
+
+| Join | Returns |
+|------|----------|
+| `INNER JOIN` | Only matching rows |
+| `LEFT JOIN` | All left rows + matching right rows |
+| `RIGHT JOIN` | All right rows + matching left rows |
+| `FULL OUTER JOIN` | All rows from both tables |
+| `CROSS JOIN` | All possible combinations |
+| `SELF JOIN` | Joins a table with itself |
+
+---
+
+# Memory Trick
+
+- **INNER JOIN** → Matching only
+- **LEFT JOIN** → Everything from Left
+- **RIGHT JOIN** → Everything from Right
+- **FULL OUTER JOIN** → Everything from Both
+- **CROSS JOIN** → Every combination
+- **SELF JOIN** → Same table joins with itself
+
+# SQL Set Operations
+
+## Definition
+
+**Set Operations** are used to **combine or compare the results of two or more `SELECT` queries**.
+
+---
+
+## Types of Set Operations
+
+| Operation | Purpose |
+|-----------|---------|
+| `UNION` | Combines results and removes duplicates |
+| `UNION ALL` | Combines results and keeps duplicates |
+| `INTERSECT` | Returns common records |
+| `EXCEPT` / `MINUS` | Returns records present in the first query but not in the second |
+
+---
+
+# Sample Tables
+
+### Customers
+
+| Name |
+|------|
+| Alice |
+| Bob |
+| Carol |
+
+### Suppliers
+
+| Name |
+|------|
+| Bob |
+| Carol |
+| David |
+
+---
+
+# 1. UNION
+
+## Definition
+
+Combines the results of two queries and **removes duplicate rows**.
+
+### Syntax
+
+```sql
+SELECT Name
+FROM Customers
+
+UNION
+
+SELECT Name
+FROM Suppliers;
+```
+
+### Output
+
+| Name |
+|------|
+| Alice |
+| Bob |
+| Carol |
+| David |
+
+> Duplicate values are removed.
+
+---
+
+# 2. UNION ALL
+
+## Definition
+
+Combines the results of two queries and **keeps duplicate rows**.
+
+### Syntax
+
+```sql
+SELECT Name
+FROM Customers
+
+UNION ALL
+
+SELECT Name
+FROM Suppliers;
+```
+
+### Output
+
+| Name |
+|------|
+| Alice |
+| Bob |
+| Carol |
+| Bob |
+| Carol |
+| David |
+
+> Duplicate values are displayed.
+
+---
+
+# 3. INTERSECT
+
+## Definition
+
+Returns only the **common records** present in both queries.
+
+### Syntax
+
+```sql
+SELECT Name
+FROM Customers
+
+INTERSECT
+
+SELECT Name
+FROM Suppliers;
+```
+
+### Output
+
+| Name |
+|------|
+| Bob |
+| Carol |
+
+> Only common values are returned.
+
+---
+
+# 4. EXCEPT / MINUS
+
+## Definition
+
+Returns the records that exist in the **first query** but not in the **second query**.
+
+> **`EXCEPT`** is used in SQL Server/PostgreSQL, while **`MINUS`** is used in Oracle.
+
+### Syntax (EXCEPT)
+
+```sql
+SELECT Name
+FROM Customers
+
+EXCEPT
+
+SELECT Name
+FROM Suppliers;
+```
+
+### Syntax (Oracle)
+
+```sql
+SELECT Name
+FROM Customers
+
+MINUS
+
+SELECT Name
+FROM Suppliers;
+```
+
+### Output
+
+| Name |
+|------|
+| Alice |
+
+> `Bob` and `Carol` are removed because they exist in both tables.
+
+---
+
+# Conditions for Set Operations
+
+Both `SELECT` queries must satisfy:
+
+- Same number of columns.
+- Corresponding columns must have compatible data types.
+
+---
+
+# Quick Revision
+
+| Operation | Result |
+|-----------|--------|
+| `UNION` | Combine + Remove Duplicates |
+| `UNION ALL` | Combine + Keep Duplicates |
+| `INTERSECT` | Common Records |
+| `EXCEPT` | First Query − Second Query |
+| `MINUS` | Oracle version of `EXCEPT` |
+
+---
+
+# Memory Trick
+
+- **UNION** → Add (No Duplicates)
+- **UNION ALL** → Add (Duplicates Allowed)
+- **INTERSECT** → Common Part
+- **EXCEPT** → Difference
+- **MINUS** → Oracle version of `EXCEPT`
+
+# SQL Subquery
+
+## Definition
+
+A **Subquery** is a query written inside another SQL query.
+
+The **inner query** executes first, and its result is used by the **outer query**.
+
+---
+
+## Subquery Concepts
+
+| Concept | Purpose |
+|---------|---------|
+| **Subquery** | A query inside another query |
+| **Inner Query** | Executes first |
+| **Outer Query** | Uses the result of the inner query |
+
+---
+
+## Example
+
+Find employees who earn more than the average salary.
+
+```sql
+SELECT Name
+FROM Employee
+WHERE Salary >
+(
+    SELECT AVG(Salary)
+    FROM Employee
+);
+```
+
+### Execution
+
+1. Inner Query
+
+```sql
+SELECT AVG(Salary)
+FROM Employee;
+```
+
+Suppose it returns:
+
+```
+50000
+```
+
+2. Outer Query
+
+```sql
+SELECT Name
+FROM Employee
+WHERE Salary > 50000;
+```
+
+Returns employees whose salary is greater than **50000**.
+
+---
+
+# Subquery Operators
+
+| Operator | Purpose | Example |
+|----------|---------|---------|
+| `=` | Equal to | `Salary = (SELECT MAX(Salary) FROM Employee)` |
+| `>` | Greater than | `Salary > (SELECT AVG(Salary) FROM Employee)` |
+| `<` | Less than | `Salary < (SELECT AVG(Salary) FROM Employee)` |
+| `>=` | Greater than or equal to | `Salary >= (SELECT AVG(Salary) FROM Employee)` |
+| `<=` | Less than or equal to | `Salary <= (SELECT AVG(Salary) FROM Employee)` |
+| `IN` | Value exists in a list | `DeptID IN (SELECT DeptID FROM Department)` |
+| `NOT IN` | Value does not exist in a list | `DeptID NOT IN (SELECT DeptID FROM Department)` |
+
+---
+
+# SQL Data Types
+
+## 1. String Data Types
+
+| Data Type | Purpose | Example |
+|-----------|---------|---------|
+| `CHAR(n)` | Fixed-length string | `CHAR(10)` |
+| `VARCHAR(n)` | Variable-length string | `VARCHAR(50)` |
+| `BLOB` | Stores large binary data (images, files, videos) | Image, PDF |
+
+### Example
+
+```sql
+CREATE TABLE Student (
+    Name CHAR(20),
+    Address VARCHAR(100)
+);
+```
+
+---
+
+## 2. Numeric Data Types
+
+| Data Type | Purpose | Example |
+|-----------|---------|---------|
+| `TINYINT` | Small integer | 10 |
+| `INT` | Normal integer | 100 |
+| `BIGINT` | Large integer | 9999999999 |
+| `FLOAT` | Decimal (less precision) | 45.67 |
+| `DOUBLE` | Decimal (higher precision) | 45.678912345 |
+| `BIT` | Stores 0 or 1 | 1 |
+| `BOOLEAN` | Stores TRUE or FALSE | TRUE |
+
+### Example
+
+```sql
+CREATE TABLE Employee (
+    ID INT,
+    Salary DOUBLE,
+    Active BOOLEAN
+);
+```
+
+---
+
+## 3. Date & Time Data Types
+
+| Data Type | Purpose | Example |
+|-----------|---------|---------|
+| `DATE` | Stores date | `2026-07-20` |
+| `TIME` | Stores time | `10:30:00` |
+| `YEAR` | Stores year | `2026` |
+
+### Example
+
+```sql
+CREATE TABLE Orders (
+    OrderDate DATE,
+    OrderTime TIME,
+    OrderYear YEAR
+);
+```
+
+---
+
+# SQL Constraints
+
+## Definition
+
+**Constraints** are rules applied to a table to ensure that only valid and consistent data is stored.
+
+---
+
+## Types of Constraints
+
+| Constraint | Purpose |
+|------------|---------|
+| `PRIMARY KEY` | Unique + NOT NULL |
+| `FOREIGN KEY` | Creates a relationship between tables |
+| `UNIQUE` | Prevents duplicate values |
+| `NOT NULL` | Prevents NULL values |
+| `CHECK` | Enforces a condition on values |
+
+---
+
+## PRIMARY KEY
+
+Uniquely identifies each record.
+
+```sql
+CREATE TABLE Student (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+```
+
+---
+
+## FOREIGN KEY
+
+Connects two tables.
+
+```sql
+CREATE TABLE Marks (
+    StudentID INT,
+    Marks INT,
+    FOREIGN KEY (StudentID)
+    REFERENCES Student(ID)
+);
+```
+
+---
+
+## UNIQUE
+
+Does not allow duplicate values.
+
+```sql
+CREATE TABLE Student (
+    Email VARCHAR(100) UNIQUE
+);
+```
+
+---
+
+## NOT NULL
+
+Does not allow NULL values.
+
+```sql
+CREATE TABLE Student (
+    Name VARCHAR(50) NOT NULL
+);
+```
+
+---
+
+## CHECK
+
+Ensures that values satisfy a condition.
+
+```sql
+CREATE TABLE Student (
+    Age INT CHECK (Age >= 18)
+);
+```
+
+---
+
+# Quick Revision
+
+## Subquery
+
+- Query inside another query.
+- Inner query executes first.
+- Outer query uses the inner query's result.
+
+## Data Types
+
+| Category | Examples |
+|----------|----------|
+| String | `CHAR`, `VARCHAR`, `BLOB` |
+| Numeric | `TINYINT`, `INT`, `BIGINT`, `FLOAT`, `DOUBLE`, `BIT`, `BOOLEAN` |
+| Date & Time | `DATE`, `TIME`, `YEAR` |
+
+## Constraints
+
+| Constraint | Purpose |
+|------------|---------|
+| `PRIMARY KEY` | Unique + NOT NULL |
+| `FOREIGN KEY` | Connects tables |
+| `UNIQUE` | No duplicate values |
+| `NOT NULL` | No NULL values |
+| `CHECK` | Enforces conditions |
