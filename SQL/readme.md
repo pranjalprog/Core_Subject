@@ -1,377 +1,203 @@
-# Set Operations in SQL
+# SQL Commands
 
-**Set Operations** are used to **combine or compare the results of multiple `SELECT` queries**.
+## 1. DDL (Data Definition Language)
 
----
+**Definition:**
 
-# 1. UNION
-
-## Definition
-
-`UNION` combines the results of two or more `SELECT` queries and **removes duplicate records**.
-
-## Syntax
-
-```sql
-SELECT column_name
-FROM table1
-
-UNION
-
-SELECT column_name
-FROM table2;
-```
-
-## Example
-
-```sql
-SELECT name
-FROM customers
-
-UNION
-
-SELECT name
-FROM suppliers;
-```
-
-### Data
-
-**Customers**
-
-```
-Alice
-Bob
-```
-
-**Suppliers**
-
-```
-Bob
-Carol
-```
-
-### Output
-
-```
-Alice
-Bob
-Carol
-```
-
-> Duplicate **Bob** is removed.
+DDL (Data Definition Language) is used to **create, modify, and delete the structure of database objects** such as databases, tables, indexes, and constraints.
 
 ---
 
-# 2. UNION ALL
+## DDL Commands
 
-## Definition
-
-`UNION ALL` combines the results of multiple `SELECT` queries and **keeps duplicate records**.
-
-## Syntax
-
-```sql
-SELECT column_name
-FROM table1
-
-UNION ALL
-
-SELECT column_name
-FROM table2;
-```
-
-## Example
-
-```sql
-SELECT name
-FROM customers
-
-UNION ALL
-
-SELECT name
-FROM suppliers;
-```
-
-### Output
-
-```
-Alice
-Bob
-Bob
-Carol
-```
-
-> Duplicate **Bob** is also displayed.
+| Command | Purpose |
+|----------|---------|
+| `CREATE` | Creates a database or table |
+| `ALTER` | Modifies the structure of a table |
+| `DROP` | Deletes a table or database permanently |
+| `TRUNCATE` | Removes all data from a table but keeps its structure |
+| `RENAME` | Renames a database object |
+| `CREATE INDEX` | Creates an index to speed up searching |
+| `DROP INDEX` | Deletes an index |
+| `ADD CONSTRAINT` | Adds a constraint to a table |
+| `DROP CONSTRAINT` | Removes a constraint from a table |
 
 ---
 
-# 3. INTERSECT
+# 1. CREATE
 
-## Definition
+Creates a new database or table.
 
-`INTERSECT` returns only the **common records** present in both queries.
-
-## Syntax
+### Create Database
 
 ```sql
-SELECT column_name
-FROM table1
-
-INTERSECT
-
-SELECT column_name
-FROM table2;
+CREATE DATABASE College;
 ```
 
-## Example
+### Create Table
 
 ```sql
-SELECT name
-FROM customers
-
-INTERSECT
-
-SELECT name
-FROM suppliers;
-```
-
-### Data
-
-**Customers**
-
-```
-Alice
-Bob
-Carol
-```
-
-**Suppliers**
-
-```
-Bob
-Carol
-David
-```
-
-### Output
-
-```
-Bob
-Carol
-```
-
-> Only common values are returned.
-
----
-
-# 4. EXCEPT / MINUS
-
-## Definition
-
-`EXCEPT` returns the records that are present in the **first query but not in the second query**.
-
-In **Oracle**, `MINUS` is used instead of `EXCEPT`.
-
-## Syntax
-
-```sql
-SELECT column_name
-FROM table1
-
-EXCEPT
-
-SELECT column_name
-FROM table2;
-```
-
-### Oracle Syntax
-
-```sql
-SELECT column_name
-FROM table1
-
-MINUS
-
-SELECT column_name
-FROM table2;
-```
-
-## Example
-
-```sql
-SELECT name
-FROM customers
-
-EXCEPT
-
-SELECT name
-FROM suppliers;
-```
-
-### Data
-
-**Customers**
-
-```
-Alice
-Bob
-Carol
-```
-
-**Suppliers**
-
-```
-Carol
-David
-```
-
-### Output
-
-```
-Alice
-Bob
-```
-
-> **Carol** is removed because it exists in both tables.
-
----
-
-# Conditions for Set Operations
-
-Both `SELECT` queries must satisfy the following conditions:
-
-## 1. Same Number of Columns
-
-✅ Correct
-
-```sql
-SELECT name
-FROM customers
-
-UNION
-
-SELECT supplier_name
-FROM suppliers;
-```
-
-❌ Wrong
-
-```sql
-SELECT id, name
-FROM customers
-
-UNION
-
-SELECT supplier_name
-FROM suppliers;
+CREATE TABLE Student (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
 ```
 
 ---
 
-## 2. Compatible Data Types
+# 2. ALTER
 
-The corresponding columns must have compatible data types.
+Modifies the structure of an existing table.
 
-✅ Correct
+### Add Column
 
 ```sql
-SELECT name
-FROM customers
-
-UNION
-
-SELECT supplier_name
-FROM suppliers;
+ALTER TABLE Student
+ADD Email VARCHAR(100);
 ```
 
-❌ Wrong
+### Modify Column (MySQL)
 
 ```sql
-SELECT age
-FROM customers
-
-UNION
-
-SELECT joining_date
-FROM employees;
+ALTER TABLE Student
+MODIFY Age BIGINT;
 ```
 
----
-
-# Interview Examples
-
-## UNION
+### Rename Column (MySQL)
 
 ```sql
-SELECT city
-FROM employees
+ALTER TABLE Student
+RENAME COLUMN Name TO StudentName;
+```
 
-UNION
+### Drop Column
 
-SELECT city
-FROM customers;
+```sql
+ALTER TABLE Student
+DROP COLUMN Email;
 ```
 
 ---
 
-## UNION ALL
+# 3. DROP
+
+Deletes the entire table along with its structure and data.
 
 ```sql
-SELECT city
-FROM employees
+DROP TABLE Student;
+```
 
-UNION ALL
+Delete a database:
 
-SELECT city
-FROM customers;
+```sql
+DROP DATABASE College;
 ```
 
 ---
 
-## INTERSECT
+# 4. TRUNCATE
+
+Deletes all records from a table but keeps the table structure.
 
 ```sql
-SELECT city
-FROM employees
-
-INTERSECT
-
-SELECT city
-FROM customers;
+TRUNCATE TABLE Student;
 ```
 
 ---
 
-## EXCEPT
+# 5. RENAME
+
+Renames a table.
 
 ```sql
-SELECT city
-FROM employees
+RENAME TABLE Student TO Students;
+```
 
-EXCEPT
+---
 
-SELECT city
-FROM customers;
+# 6. CREATE INDEX
+
+Creates an index to improve search performance.
+
+```sql
+CREATE INDEX idx_name
+ON Student(Name);
+```
+
+---
+
+# 7. DROP INDEX
+
+Deletes an index.
+
+### MySQL
+
+```sql
+DROP INDEX idx_name
+ON Student;
+```
+
+### SQL Server
+
+```sql
+DROP INDEX Student.idx_name;
+```
+
+---
+
+# 8. ADD CONSTRAINT
+
+Adds a constraint to an existing table.
+
+### Add UNIQUE Constraint
+
+```sql
+ALTER TABLE Student
+ADD CONSTRAINT uq_email
+UNIQUE (Email);
+```
+
+### Add CHECK Constraint
+
+```sql
+ALTER TABLE Student
+ADD CONSTRAINT chk_age
+CHECK (Age >= 18);
+```
+
+---
+
+# 9. DROP CONSTRAINT
+
+Removes a constraint from a table.
+
+### MySQL
+
+```sql
+ALTER TABLE Student
+DROP INDEX uq_email;
+```
+
+### SQL Server / Oracle
+
+```sql
+ALTER TABLE Student
+DROP CONSTRAINT uq_email;
 ```
 
 ---
 
 # Quick Revision
 
-| Operation | Purpose |
-|-----------|---------|
-| `UNION` | Combine results and remove duplicates |
-| `UNION ALL` | Combine results and keep duplicates |
-| `INTERSECT` | Return common records |
-| `EXCEPT` | Return records in the first query but not in the second |
-| `MINUS` | Oracle version of `EXCEPT` |
-
----
-
-# Memory Trick
-
-- **UNION** → Combine + Remove Duplicates
-- **UNION ALL** → Combine + Keep Duplicates
-- **INTERSECT** → Common Records
-- **EXCEPT** → First − Second
-- **MINUS** → Oracle version of `EXCEPT`
+| Command | Example |
+|----------|---------|
+| `CREATE` | `CREATE TABLE Student (...);` |
+| `ALTER` | `ALTER TABLE Student ADD Email VARCHAR(100);` |
+| `DROP` | `DROP TABLE Student;` |
+| `TRUNCATE` | `TRUNCATE TABLE Student;` |
+| `RENAME` | `RENAME TABLE Student TO Students;` |
+| `CREATE INDEX` | `CREATE INDEX idx_name ON Student(Name);` |
+| `DROP INDEX` | `DROP INDEX idx_name ON Student;` |
+| `ADD CONSTRAINT` | `ALTER TABLE Student ADD CONSTRAINT ...;` |
+| `DROP CONSTRAINT` | `ALTER TABLE Student DROP CONSTRAINT ...;` |
