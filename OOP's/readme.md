@@ -1536,3 +1536,195 @@ This is also an example of Encapsulation.
 # One-Line Definition (Hinglish)
 
 > **Encapsulation ka matlab hai data aur methods ko ek class ke andar rakhna aur `private` variables aur getter/setter methods ki help se data ko direct access se protect karna.**
+
+
+# Abstraction in Java
+
+**Abstraction** is the process of **hiding implementation details and showing only the essential functionality to the user.**
+
+**Hinglish:**
+
+> **Implementation (andar kaise kaam ho raha hai) ko hide karke sirf zaroori functionality dikhana, Abstraction kehlata hai.**
+
+---
+
+# Why Do We Use Abstraction?
+
+Abstraction is used to:
+
+- Hide complex implementation.
+- Show only essential features.
+- Improve security.
+- Reduce code complexity.
+
+---
+
+# Real-Life Example
+
+## ATM Machine
+
+When you withdraw money:
+
+- You insert the ATM card.
+- Enter the PIN.
+- Select the amount.
+
+You **don't know** how the bank verifies the PIN, checks your balance, or processes the transaction.
+
+You only use the required functionality.
+
+This is **Abstraction**.
+
+---
+
+## Car Example
+
+When you drive a car:
+
+- You press the accelerator.
+- Apply the brakes.
+- Turn the steering wheel.
+
+You don't need to know how the engine, gearbox, or fuel injection system works internally.
+
+You only use the necessary controls.
+
+This is also **Abstraction**.
+
+---
+
+# How is Abstraction Achieved in Java?
+
+Java provides two ways:
+
+1. Abstract Class
+2. Interface
+
+---
+
+# 1. Abstract Class
+
+An **abstract class** is a class that cannot be instantiated (you cannot create its object).
+
+It may contain:
+
+- Abstract methods (without a body)
+- Concrete methods (with a body)
+
+## Example
+
+```java
+abstract class Animal {
+
+    abstract void sound();
+
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+
+        d.sound();
+        d.eat();
+
+    }
+}
+```
+
+### Output
+
+```
+Dog barks
+Animal is eating
+```
+
+---
+
+# 2. Interface
+
+An **interface** defines a contract that classes must follow.
+
+A class that implements an interface must provide the implementation of its methods.
+
+## Example
+
+```java
+interface Animal {
+
+    void sound();
+}
+
+class Dog implements Animal {
+
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+
+        d.sound();
+
+    }
+}
+```
+
+### Output
+
+```
+Dog barks
+```
+
+---
+
+# Abstraction vs Encapsulation
+
+| Abstraction | Encapsulation |
+|-------------|---------------|
+| Hides implementation details | Hides data |
+| Focuses on **what** an object does | Focuses on **how** data is protected |
+| Achieved using Abstract Classes and Interfaces | Achieved using `private` variables and Getter/Setter methods |
+
+---
+
+# Summary
+
+| Feature | Description |
+|---------|-------------|
+| Purpose | Hide implementation details |
+| Achieved Using | Abstract Class and Interface |
+| Benefit | Reduces complexity and improves security |
+
+---
+
+# Quick Revision
+
+- Abstraction = Hide implementation, show only functionality.
+- Achieved using:
+  - Abstract Class
+  - Interface
+- You cannot create an object of an abstract class.
+- A class implementing an interface must implement its methods.
+
+---
+
+# One-Line Definition (Hinglish)
+
+> **Abstraction ka matlab hai implementation details ko hide karke user ko sirf zaroori functionality dikhana.**
