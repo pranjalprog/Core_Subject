@@ -666,3 +666,268 @@ GROUP BY City;
 - **AVG()** → Average
 - **MAX()** → Highest value
 - **MIN()** → Lowest value
+
+
+# 3. DML (Data Manipulation Language)
+
+## Definition
+
+DML (Data Manipulation Language) is used to **insert, update, and delete data** in database tables.
+
+---
+
+## DML Commands
+
+| Command | Purpose |
+|----------|---------|
+| `INSERT` | Adds a new record |
+| `UPDATE` | Modifies existing records |
+| `DELETE` | Deletes records |
+
+---
+
+# 1. INSERT
+
+Adds a new record to a table.
+
+```sql
+INSERT INTO Student (ID, Name, Age)
+VALUES (101, 'Rahul', 20);
+```
+
+Insert multiple records.
+
+```sql
+INSERT INTO Student (ID, Name, Age)
+VALUES
+(102, 'Aman', 21),
+(103, 'Priya', 22);
+```
+
+---
+
+# 2. UPDATE
+
+Updates existing records.
+
+```sql
+UPDATE Student
+SET Age = 21
+WHERE ID = 101;
+```
+
+Update multiple columns.
+
+```sql
+UPDATE Student
+SET Name = 'Rahul Sharma',
+    Age = 22
+WHERE ID = 101;
+```
+
+> **Always use `WHERE`; otherwise, all rows will be updated.**
+
+---
+
+# 3. DELETE
+
+Deletes records from a table.
+
+Delete a specific record.
+
+```sql
+DELETE FROM Student
+WHERE ID = 101;
+```
+
+Delete all records.
+
+```sql
+DELETE FROM Student;
+```
+
+> `DELETE` removes only the data; the table structure remains.
+
+---
+
+# Quick Revision
+
+| Command | Example |
+|----------|---------|
+| `INSERT` | `INSERT INTO Student VALUES (101,'Rahul',20);` |
+| `UPDATE` | `UPDATE Student SET Age=21 WHERE ID=101;` |
+| `DELETE` | `DELETE FROM Student WHERE ID=101;` |
+
+---
+
+# 4. DCL (Data Control Language)
+
+## Definition
+
+DCL (Data Control Language) is used to **grant and revoke permissions** on database objects.
+
+---
+
+## DCL Commands
+
+| Command | Purpose |
+|----------|---------|
+| `GRANT` | Gives permissions to a user |
+| `REVOKE` | Removes permissions from a user |
+
+---
+
+# 1. GRANT
+
+Grants permissions to a user.
+
+```sql
+GRANT SELECT
+ON Student
+TO user1;
+```
+
+Grant multiple permissions.
+
+```sql
+GRANT SELECT, INSERT, UPDATE
+ON Student
+TO user1;
+```
+
+---
+
+# 2. REVOKE
+
+Removes permissions from a user.
+
+```sql
+REVOKE SELECT
+ON Student
+FROM user1;
+```
+
+Remove multiple permissions.
+
+```sql
+REVOKE INSERT, UPDATE
+ON Student
+FROM user1;
+```
+
+---
+
+# Quick Revision
+
+| Command | Example |
+|----------|---------|
+| `GRANT` | `GRANT SELECT ON Student TO user1;` |
+| `REVOKE` | `REVOKE SELECT ON Student FROM user1;` |
+
+---
+
+# 5. TCL (Transaction Control Language)
+
+## Definition
+
+TCL (Transaction Control Language) is used to **manage database transactions**.
+
+---
+
+## TCL Commands
+
+| Command | Purpose |
+|----------|---------|
+| `COMMIT` | Permanently saves changes |
+| `ROLLBACK` | Undoes changes |
+| `SAVEPOINT` | Creates a checkpoint in a transaction |
+| `START TRANSACTION` | Starts a new transaction |
+
+---
+
+# 1. START TRANSACTION
+
+Begins a new transaction.
+
+```sql
+START TRANSACTION;
+```
+
+---
+
+# 2. COMMIT
+
+Permanently saves all changes made in the current transaction.
+
+```sql
+START TRANSACTION;
+
+UPDATE Student
+SET Age = 21
+WHERE ID = 101;
+
+COMMIT;
+```
+
+---
+
+# 3. ROLLBACK
+
+Undoes all changes since the last `COMMIT` or returns to a `SAVEPOINT`.
+
+```sql
+START TRANSACTION;
+
+UPDATE Student
+SET Age = 25
+WHERE ID = 101;
+
+ROLLBACK;
+```
+
+The update is cancelled.
+
+---
+
+# 4. SAVEPOINT
+
+Creates a checkpoint inside a transaction.
+
+```sql
+START TRANSACTION;
+
+UPDATE Student
+SET Age = 21
+WHERE ID = 101;
+
+SAVEPOINT sp1;
+
+UPDATE Student
+SET Age = 22
+WHERE ID = 101;
+
+ROLLBACK TO sp1;
+
+COMMIT;
+```
+
+After `ROLLBACK TO sp1`, the second update is undone, but the first update is kept.
+
+---
+
+# Quick Revision
+
+| Command | Example |
+|----------|---------|
+| `START TRANSACTION` | `START TRANSACTION;` |
+| `COMMIT` | `COMMIT;` |
+| `ROLLBACK` | `ROLLBACK;` |
+| `SAVEPOINT` | `SAVEPOINT sp1;` |
+
+---
+
+# Memory Trick
+
+- **DML** → Change Data (`INSERT`, `UPDATE`, `DELETE`)
+- **DCL** → Control Permissions (`GRANT`, `REVOKE`)
+- **TCL** → Manage Transactions (`START TRANSACTION`, `COMMIT`, `ROLLBACK`, `SAVEPOINT`)s
