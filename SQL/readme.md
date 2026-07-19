@@ -470,3 +470,199 @@ HAVING COUNT(*) > 2;
 | `ORDER BY` | `ORDER BY Age DESC` |
 | `GROUP BY` | `GROUP BY City` |
 | `HAVING` | `HAVING COUNT(*) > 2` |
+
+
+# Aggregate Functions in SQL
+
+## Definition
+
+**Aggregate Functions** perform calculations on **multiple rows** and return **a single result**.
+
+They are commonly used with the **`GROUP BY`** clause.
+
+---
+
+## Aggregate Functions
+
+| Function | Purpose |
+|----------|---------|
+| `COUNT()` | Counts the number of rows |
+| `SUM()` | Returns the total sum |
+| `AVG()` | Returns the average value |
+| `MAX()` | Returns the maximum value |
+| `MIN()` | Returns the minimum value |
+
+---
+
+# Sample Table
+
+| ID | Name | City | Salary |
+|----|------|------|--------|
+| 1 | Rahul | Delhi | 50000 |
+| 2 | Aman | Jaipur | 40000 |
+| 3 | Priya | Delhi | 60000 |
+| 4 | Neha | Mumbai | 45000 |
+| 5 | Ravi | Delhi | 55000 |
+
+---
+
+# 1. COUNT()
+
+Counts the total number of rows.
+
+```sql
+SELECT COUNT(*)
+FROM Student;
+```
+
+### Output
+
+```
+5
+```
+
+Count students in each city.
+
+```sql
+SELECT City, COUNT(*)
+FROM Student
+GROUP BY City;
+```
+
+### Output
+
+| City | COUNT(*) |
+|------|----------|
+| Delhi | 3 |
+| Jaipur | 1 |
+| Mumbai | 1 |
+
+---
+
+# 2. SUM()
+
+Returns the total sum of a numeric column.
+
+```sql
+SELECT SUM(Salary)
+FROM Student;
+```
+
+### Output
+
+```
+250000
+```
+
+Total salary city-wise.
+
+```sql
+SELECT City, SUM(Salary)
+FROM Student
+GROUP BY City;
+```
+
+### Output
+
+| City | SUM(Salary) |
+|------|-------------|
+| Delhi | 165000 |
+| Jaipur | 40000 |
+| Mumbai | 45000 |
+
+---
+
+# 3. AVG()
+
+Returns the average value.
+
+```sql
+SELECT AVG(Salary)
+FROM Student;
+```
+
+### Output
+
+```
+50000
+```
+
+Average salary city-wise.
+
+```sql
+SELECT City, AVG(Salary)
+FROM Student
+GROUP BY City;
+```
+
+---
+
+# 4. MAX()
+
+Returns the highest value.
+
+```sql
+SELECT MAX(Salary)
+FROM Student;
+```
+
+### Output
+
+```
+60000
+```
+
+Highest salary in each city.
+
+```sql
+SELECT City, MAX(Salary)
+FROM Student
+GROUP BY City;
+```
+
+---
+
+# 5. MIN()
+
+Returns the lowest value.
+
+```sql
+SELECT MIN(Salary)
+FROM Student;
+```
+
+### Output
+
+```
+40000
+```
+
+Lowest salary in each city.
+
+```sql
+SELECT City, MIN(Salary)
+FROM Student
+GROUP BY City;
+```
+
+---
+
+# Quick Revision
+
+| Function | Example | Result |
+|----------|---------|--------|
+| `COUNT()` | `COUNT(*)` | Counts rows |
+| `SUM()` | `SUM(Salary)` | Total sum |
+| `AVG()` | `AVG(Salary)` | Average value |
+| `MAX()` | `MAX(Salary)` | Highest value |
+| `MIN()` | `MIN(Salary)` | Lowest value |
+
+---
+
+# Memory Trick
+
+- **COUNT()** → Count rows
+- **SUM()** → Total
+- **AVG()** → Average
+- **MAX()** → Highest value
+- **MIN()** → Lowest value
