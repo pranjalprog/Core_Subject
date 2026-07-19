@@ -1356,3 +1356,183 @@ But the behavior changes depending on the payment method.
 - Overriding → Child class changes the parent's method implementation.
 - Compile-Time → Decided by the compiler.
 - Run-Time → Decided by the JVM.
+
+# Encapsulation in Java
+
+**Encapsulation** is the process of **wrapping data (variables) and methods into a single unit (class)** and **protecting the data from direct access**.
+
+**Hinglish:**
+
+> **Data (variables) aur methods ko ek class ke andar rakhna aur data ko direct access se protect karna, Encapsulation kehlata hai.**
+
+---
+
+# Why Do We Use Encapsulation?
+
+Encapsulation is used to:
+
+- Protect data from unauthorized access.
+- Improve security.
+- Control how data is accessed or modified.
+- Make code easier to maintain.
+
+---
+
+# How is Encapsulation Achieved?
+
+Using:
+- `private` variables (data hiding)
+- `public` getter and setter methods
+
+---
+
+# Example
+
+```java
+class Student {
+
+    private int id;
+
+    // Setter Method
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    // Getter Method
+    public int getId() {
+        return id;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        s.setId(101);
+
+        System.out.println(s.getId());
+
+    }
+}
+```
+
+### Output
+
+```
+101
+```
+
+---
+
+# Explanation
+
+```java
+private int id;
+```
+
+`id` is **private**, so it **cannot be accessed directly** outside the class.
+
+❌ Not Allowed
+
+```java
+Student s = new Student();
+
+s.id = 101;     // Error
+```
+
+Instead, we use:
+
+```java
+s.setId(101);
+```
+
+to store the value, and
+
+```java
+s.getId();
+```
+
+to read the value.
+
+This keeps the data secure.
+
+---
+
+# Real-Life Example
+
+### ATM Machine
+
+When you withdraw money:
+
+- You **cannot directly access** the bank's database.
+- You enter your PIN.
+- The ATM checks your details.
+- If everything is correct, it gives you money.
+
+```
+Customer
+    ↓
+ATM Machine
+    ↓
+Bank Database
+```
+
+The bank data is protected and can only be accessed through the ATM.
+
+This is **Encapsulation**.
+
+---
+
+# Another Real-Life Example
+
+### Mobile Phone
+
+You increase the volume by pressing:
+
+```
+Volume Up
+```
+
+You don't directly change the phone's internal hardware.
+
+The phone provides a controlled way to modify the volume.
+
+This is also an example of Encapsulation.
+
+---
+
+# Advantages of Encapsulation
+
+- Data Security
+- Data Hiding
+- Better Code Maintenance
+- Controlled Access
+- Improved Reusability
+
+---
+
+# Summary
+
+| Feature | Description |
+|---------|-------------|
+| Data Members | Usually `private` |
+| Methods | `public` Getter and Setter |
+| Purpose | Hide data and provide controlled access |
+
+---
+
+# Quick Revision
+
+- Encapsulation = **Data Hiding + Wrapping Data and Methods**
+- Use `private` variables.
+- Access data using Getter and Setter methods.
+- Prevents direct access to data.
+- Improves security and maintainability.
+
+---
+
+# One-Line Definition (Hinglish)
+
+> **Encapsulation ka matlab hai data aur methods ko ek class ke andar rakhna aur `private` variables aur getter/setter methods ki help se data ko direct access se protect karna.**
