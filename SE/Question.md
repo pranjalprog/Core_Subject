@@ -398,3 +398,33 @@ Testing helps identify bugs, improves software quality, ensures reliability, and
 - Git → Version control.
 - GitHub → Git repository hosting.
 - Maintenance → Improve software after deployment.
+
+
+Authentication vs Authorization
+Authentication	Authorization
+Verifies who the user is (identity check).	Determines what the user is allowed to access.
+
+Example:
+
+Authentication: Logging in with a username and password.
+Authorization: After login, an admin can access the admin panel, but a normal user cannot.
+
+Easy Trick:
+
+Authentication = Identity ("Who are you?")
+Authorization = Permission ("What can you access?")
+
+
+Verification vs Validation
+Verification	Validation
+Checks whether the software is built correctly according to requirements.	Checks whether the right software is built for the user's needs.
+
+Example:
+
+Verification: Reviewing the design document or code to ensure it follows the requirements.
+Validation: Running the software to check if it satisfies the customer's expectations.
+
+Easy Trick:
+
+Verification = "Are we building the product right?"
+Validation = "Are we building the right product?"
