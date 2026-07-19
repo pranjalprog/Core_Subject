@@ -977,3 +977,184 @@ for proper resource management.
 - Java does **not** support destructors.
 - Memory is managed automatically by the Garbage Collector.
 - `finalize()` is deprecated and should not be used.
+
+# Copy Constructor in Java
+
+A **copy constructor** is a constructor that creates a new object by copying the values from another object of the same class.
+
+> **Note:** Unlike C++, Java does **not** provide a built-in copy constructor. We create it manually.
+
+---
+
+# Why Do We Use a Copy Constructor?
+
+It is used to:
+- Create a duplicate object.
+- Copy all instance variables from one object to another.
+- Avoid manually assigning each field every time.
+
+---
+
+# Syntax
+
+```java
+class ClassName {
+
+    ClassName(ClassName obj) {
+        // Copy data from obj
+    }
+
+}
+```
+
+---
+
+# Example
+
+```java
+class Student {
+
+    int id;
+    String name;
+
+    // Parameterized Constructor
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Copy Constructor
+    Student(Student s) {
+        this.id = s.id;
+        this.name = s.name;
+    }
+
+    void display() {
+        System.out.println(id + " " + name);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student(101, "Rahul");
+
+        // Copy s1 into s2
+        Student s2 = new Student(s1);
+
+        s1.display();
+        s2.display();
+
+    }
+}
+```
+
+### Output
+
+```
+101 Rahul
+101 Rahul
+```
+
+---
+
+# How It Works
+
+### Step 1
+
+```java
+Student s1 = new Student(101, "Rahul");
+```
+
+Memory:
+
+```
+s1
+------------
+id = 101
+name = Rahul
+```
+
+---
+
+### Step 2
+
+```java
+Student s2 = new Student(s1);
+```
+
+The copy constructor receives `s1`.
+
+```java
+Student(Student s) {
+    this.id = s.id;
+    this.name = s.name;
+}
+```
+
+Here:
+
+- `this.id` → `s2` object's `id`
+- `s.id` → `s1` object's `id`
+
+So Java copies:
+
+```
+s2.id = s1.id
+s2.name = s1.name
+```
+
+Memory becomes:
+
+```
+s1                    s2
+------                ------
+id = 101              id = 101
+name = Rahul          name = Rahul
+```
+
+The values are the same, but `s1` and `s2` are **different objects**.
+
+---
+
+# Verifying They Are Different Objects
+
+```java
+System.out.println(s1 == s2);
+```
+
+### Output
+
+```
+false
+```
+
+`==` compares object references (memory addresses), not the values.
+
+---
+
+# Copy Constructor vs Parameterized Constructor
+
+| Parameterized Constructor | Copy Constructor |
+|---------------------------|------------------|
+| Receives values | Receives another object |
+| Initializes with new data | Initializes by copying another object |
+| Example: `Student(101, "Rahul")` | Example: `Student(s1)` |
+
+---
+
+# Summary
+
+- A copy constructor creates a new object by copying another object's data.
+- Java does **not** have a built-in copy constructor.
+- We create it manually.
+- Syntax:
+
+```java
+ClassName(ClassName obj) {
+    // Copy fields
+}
+```
+
+- The copied object has the **same values** but is a **different object in memory**.
