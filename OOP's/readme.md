@@ -1728,3 +1728,729 @@ Dog barks
 # One-Line Definition (Hinglish)
 
 > **Abstraction ka matlab hai implementation details ko hide karke user ko sirf zaroori functionality dikhana.**
+
+# Access Specifiers in Java
+
+**Access Specifiers** are keywords used to **control the visibility (accessibility) of classes, variables, methods, and constructors.**
+
+**Hinglish:**
+
+> **Access Specifiers batate hain ki class, variable, method ya constructor ko kahan-kahan se access kiya ja sakta hai.**
+
+---
+
+# Types of Access Specifiers
+
+Java has **4 Access Specifiers**:
+
+1. `public`
+2. `private`
+3. `protected`
+4. Default (No Access Modifier)
+
+---
+
+# 1. `public`
+
+A `public` member can be accessed **from anywhere** in the program.
+
+### Example
+
+```java
+class Student {
+
+    public int id = 101;
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        System.out.println(s.id);
+
+    }
+}
+```
+
+### Output
+
+```
+101
+```
+
+---
+
+# 2. `private`
+
+A `private` member can be accessed **only within the same class**.
+
+### Example
+
+```java
+class Student {
+
+    private int id = 101;
+
+    public void display() {
+        System.out.println(id);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        s.display();
+
+        // System.out.println(s.id); ❌ Error
+
+    }
+}
+```
+
+### Output
+
+```
+101
+```
+
+---
+
+# 3. `protected`
+
+A `protected` member can be accessed:
+
+- Inside the same class.
+- Inside the same package.
+- In child classes (even if they are in different packages).
+
+### Example
+
+```java
+class Animal {
+
+    protected void sound() {
+        System.out.println("Animal Sound");
+    }
+}
+
+class Dog extends Animal {
+
+    void bark() {
+        sound();
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+
+        d.bark();
+
+    }
+}
+```
+
+### Output
+
+```
+Animal Sound
+```
+
+---
+
+# 4. Default (No Access Modifier)
+
+If you don't write any access specifier, Java uses the **default** access level.
+
+A default member can be accessed **only within the same package**.
+
+### Example
+
+```java
+class Student {
+
+    int id = 101;
+}
+```
+
+`id` can be accessed only by classes in the same package.
+
+---
+
+# Access Level Summary
+
+| Access Specifier | Same Class | Same Package | Child Class (Different Package) | Different Package |
+|------------------|:----------:|:------------:|:-------------------------------:|:-----------------:|
+| `public` | ✅ | ✅ | ✅ | ✅ |
+| `protected` | ✅ | ✅ | ✅ | ❌ |
+| Default | ✅ | ✅ | ❌ | ❌ |
+| `private` | ✅ | ❌ | ❌ | ❌ |
+
+---
+
+# Real-Life Example
+
+Imagine a **Bank Locker**.
+
+### `public`
+
+Like the **bank's address**.
+
+Everyone can access it.
+
+---
+
+### `private`
+
+Like your **ATM PIN**.
+
+Only you can access it.
+
+---
+
+### `protected`
+
+Like a **family locker**.
+
+Only family members (child classes) can access it.
+
+---
+
+### Default
+
+Like an **office notice board**.
+
+Only people inside the same office (package) can access it.
+
+---
+
+# Which Access Specifier Should You Use?
+
+| Situation | Access Specifier |
+|-----------|------------------|
+| Everyone should access | `public` |
+| Data should be hidden | `private` |
+| Child classes should access | `protected` |
+| Only same package should access | Default |
+
+---
+
+# Quick Revision
+
+- **public** → Accessible from everywhere.
+- **private** → Accessible only inside the same class.
+- **protected** → Accessible in the same package and child classes.
+- **Default** → Accessible only within the same package.
+
+---
+
+# One-Line Definition (Hinglish)
+
+> **Access Specifiers wo keywords hote hain jo decide karte hain ki class, method, variable ya constructor ko kahan-kahan se access kiya ja sakta hai.**
+
+# Virtual Function, Pure Virtual Function, and Friend Function (C++)
+
+> **Note:** These concepts belong to **C++**, not Java.
+
+---
+
+# 1. Virtual Function
+
+A **virtual function** is a function declared with the `virtual` keyword in the parent class. It allows the **child class to override the function**, and the decision of which function to call is made at **runtime**.
+
+**Hinglish:**
+
+> **Virtual function parent class mein declare hoti hai aur child class usko override kar sakti hai. Runtime par actual object ke hisaab se function call hota hai.**
+
+---
+
+## Syntax
+
+```cpp
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal Sound";
+    }
+};
+```
+
+---
+
+## Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal Sound" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog Barks" << endl;
+    }
+};
+
+int main() {
+
+    Animal* a = new Dog();
+
+    a->sound();
+
+    return 0;
+}
+```
+
+### Output
+
+```
+Dog Barks
+```
+
+---
+
+## Real-Life Example
+
+Think of a **Remote Control**.
+
+```
+Remote
+   ↓
+Power Button
+```
+
+The same **Power** button:
+
+- TV → Turns on TV
+- AC → Turns on AC
+- Fan → Turns on Fan
+
+Same function, different behavior depending on the actual device.
+
+This is **Virtual Function**.
+
+---
+
+# 2. Pure Virtual Function
+
+A **pure virtual function** is a virtual function with **no implementation** in the base class.
+
+It is declared using `= 0`.
+
+A class containing at least one pure virtual function becomes an **Abstract Class**.
+
+**Hinglish:**
+
+> **Pure virtual function sirf declaration deti hai, implementation nahi. Child class ko uski implementation deni hi padti hai.**
+
+---
+
+## Syntax
+
+```cpp
+virtual void sound() = 0;
+```
+
+---
+
+## Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog Barks" << endl;
+    }
+};
+
+int main() {
+
+    Dog d;
+
+    d.sound();
+
+    return 0;
+}
+```
+
+### Output
+
+```
+Dog Barks
+```
+
+---
+
+## Why Use a Pure Virtual Function?
+
+Suppose every animal makes a different sound.
+
+The parent class (`Animal`) doesn't know the sound.
+
+So it only declares:
+
+```cpp
+virtual void sound() = 0;
+```
+
+Each child class must define its own sound.
+
+---
+
+## Real-Life Example
+
+Imagine a company.
+
+```
+Employee
+
+Work()
+```
+
+The company only says every employee must **work**.
+
+How they work depends on the employee.
+
+- Developer → Writes code
+- Tester → Tests software
+- Manager → Manages the team
+
+The base class defines only the rule, not the implementation.
+
+This is a **Pure Virtual Function**.
+
+---
+
+# 3. Friend Function
+
+A **friend function** is **not a member of the class**, but it can access the class's **private** and **protected** members.
+
+It is declared using the `friend` keyword.
+
+**Hinglish:**
+
+> **Friend function class ka member nahi hota, lekin class ke private aur protected members ko access kar sakta hai.**
+
+---
+
+## Syntax
+
+```cpp
+class Student {
+
+    friend void display(Student);
+
+};
+```
+
+---
+
+## Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Student {
+
+private:
+    int id = 101;
+
+public:
+    friend void display(Student);
+};
+
+void display(Student s) {
+    cout << s.id;
+}
+
+int main() {
+
+    Student s;
+
+    display(s);
+
+    return 0;
+}
+```
+
+### Output
+
+```
+101
+```
+
+---
+
+## Why Use a Friend Function?
+
+Normally:
+
+```cpp
+s.id;
+```
+
+❌ Not allowed because `id` is private.
+
+But if the function is declared as a **friend**, it can access private data.
+
+---
+
+## Real-Life Example
+
+Imagine a **Bank Locker**.
+
+```
+Locker
+│
+├── Owner ✔
+├── Manager ✔
+└── Stranger ❌
+```
+
+Normally only the owner can access the locker.
+
+But the bank manager has special permission.
+
+The **manager** is like a **friend function**.
+
+---
+
+# Difference Between Virtual and Pure Virtual Function
+
+| Virtual Function | Pure Virtual Function |
+|------------------|-----------------------|
+| Has implementation | No implementation |
+| Child may override | Child must override |
+| Base class object can be created | Base class becomes abstract, object cannot be created |
+
+---
+
+# Difference Between Virtual Function and Friend Function
+
+| Virtual Function | Friend Function |
+|------------------|-----------------|
+| Member function | Not a member function |
+| Supports runtime polymorphism | Does not support polymorphism |
+| Can be overridden | Cannot be overridden |
+| Declared using `virtual` | Declared using `friend` |
+
+---
+
+# Quick Revision
+
+- **Virtual Function** → Supports runtime polymorphism.
+- **Pure Virtual Function** → Declares a method without implementation (`= 0`); child class must implement it.
+- **Friend Function** → Not a class member, but can access private and protected members.
+
+---
+
+# One-Line Definitions (Hinglish)
+
+- **Virtual Function:** Parent class ka function jo runtime par child class ke overridden function ko call karne deta hai.
+
+- **Pure Virtual Function:** Aisa virtual function jiska implementation parent class mein nahi hota aur child class ko implement karna hi padta hai.
+
+- **Friend Function:** Aisa function jo class ka member nahi hota, lekin class ke private aur protected members ko access kar sakta hai.
+
+# 1. Exception Handling (Java)
+
+**Exception Handling** is a mechanism used to **handle runtime errors** so that the program does not terminate unexpectedly.
+
+**Hinglish:**
+
+> **Program mein runtime error aane par usse handle karke program ko normally chalate rehna, Exception Handling kehlata hai.**
+
+## Keywords
+
+- `try` → Code that may throw an exception.
+- `catch` → Handles the exception.
+- `finally` → Always executes (used for cleanup).
+- `throw` → Used to explicitly throw an exception.
+- `throws` → Declares that a method may throw an exception.
+
+### Example
+
+```java
+try {
+    int a = 10 / 0;
+}
+catch (Exception e) {
+    System.out.println("Exception Handled");
+}
+finally {
+    System.out.println("Always Executes");
+}
+```
+
+---
+
+# 2. Packages (Java)
+
+A **package** is a collection of related classes and interfaces.
+
+It is used to organize Java programs and avoid naming conflicts.
+
+**Hinglish:**
+
+> **Related classes aur interfaces ko ek folder (package) mein organize karna, Package kehlata hai.**
+
+## Advantages
+
+- Organizes code.
+- Avoids class name conflicts.
+- Improves code reusability.
+- Provides access protection.
+
+### Example
+
+```java
+package mypackage;
+
+public class Student {
+
+}
+```
+
+Importing a package:
+
+```java
+import java.util.Scanner;
+```
+
+---
+
+# 3. Static Keyword (Java)
+
+The `static` keyword makes a member belong to the **class**, not to an object.
+
+**Hinglish:**
+
+> **Static member class ka hota hai, object ka nahi.**
+
+## Types
+
+### Static Variable
+
+One copy is shared by all objects.
+
+```java
+class Student {
+    static String college = "ABC College";
+}
+```
+
+---
+
+### Static Method
+
+Can be called without creating an object.
+
+```java
+class Demo {
+
+    static void show() {
+        System.out.println("Static Method");
+    }
+}
+
+Demo.show();
+```
+
+---
+
+### Static Block
+
+Executes **only once** when the class is loaded.
+
+```java
+class Demo {
+
+    static {
+        System.out.println("Static Block");
+    }
+
+}
+```
+
+---
+
+# 4. Object Class (Java)
+
+The **`Object` class** is the **parent class of all Java classes**.
+
+Every class in Java **implicitly inherits** from the `Object` class.
+
+**Hinglish:**
+
+> **Java mein har class indirectly `Object` class ko inherit karti hai.**
+
+## Common Methods
+
+### `toString()`
+
+Returns the string representation of an object.
+
+```java
+System.out.println(obj.toString());
+```
+
+---
+
+### `equals()`
+
+Compares two objects for equality.
+
+```java
+obj1.equals(obj2);
+```
+
+---
+
+### `hashCode()`
+
+Returns the hash code of an object.
+
+```java
+obj.hashCode();
+```
+
+---
+
+### `clone()`
+
+Creates a copy of an object.
+
+```java
+obj.clone();
+```
+
+---
+
+# Quick Revision
+
+- **Exception Handling** → Handles runtime errors using `try`, `catch`, `finally`, `throw`, and `throws`.
+- **Package** → A collection of related classes and interfaces used to organize code.
+- **Static** → Belongs to the class, not to an object.
+- **Object Class** → The parent class of every Java class; provides common methods like `toString()`, `equals()`, `hashCode()`, and `clone()`.
