@@ -604,3 +604,376 @@ instead of `finalize()`.
 - **`final`** → **Cannot change**
 - **`finally`** → **Always runs**
 - **`finalize()`** → **Runs before object destruction (deprecated)**
+
+# Constructors and Destructors in Java
+
+A **constructor** is a special method that is automatically called when an object is created. Its main purpose is to initialize the object's data.
+
+---
+
+# Constructor
+
+## Definition
+
+A constructor is a special method that:
+
+- Has the **same name as the class**.
+- Has **no return type** (not even `void`).
+- Is automatically called when an object is created using the `new` keyword.
+
+## Syntax
+
+```java
+class Student {
+
+    Student() {
+        // Constructor
+    }
+
+}
+```
+
+---
+
+# Why Do We Use Constructors?
+
+Constructors are used to:
+
+- Initialize object variables.
+- Assign default values.
+- Execute setup code when an object is created.
+
+Instead of writing:
+
+```java
+Student s = new Student();
+
+s.id = 101;
+s.name = "Rahul";
+```
+
+we can initialize everything inside the constructor.
+
+---
+
+# Example
+
+```java
+class Student {
+
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println(id + " " + name);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student(101, "Rahul");
+
+        s.display();
+    }
+}
+```
+
+### Output
+
+```
+101 Rahul
+```
+
+---
+
+# Types of Constructors
+
+Java mainly has **two types of constructors**.
+
+## 1. Default Constructor
+
+A constructor with **no parameters**.
+
+It initializes the object with default values.
+
+### Example
+
+```java
+class Student {
+
+    Student() {
+        System.out.println("Object Created");
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+    }
+}
+```
+
+### Output
+
+```
+Object Created
+```
+
+> **Note:** If you do not write any constructor, the Java compiler automatically provides a **default constructor** (also called an implicit default constructor). However, if you define any constructor yourself, the compiler no longer creates this default constructor automatically.
+
+---
+
+## 2. Parameterized Constructor
+
+A constructor that accepts one or more parameters.
+
+It is used to initialize objects with different values.
+
+### Example
+
+```java
+class Student {
+
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println(id + " " + name);
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student(101, "Rahul");
+        Student s2 = new Student(102, "Aman");
+
+        s1.display();
+        s2.display();
+
+    }
+}
+```
+
+### Output
+
+```
+101 Rahul
+102 Aman
+```
+
+---
+
+# Constructor Overloading
+
+A class can have multiple constructors with different parameter lists.
+
+### Example
+
+```java
+class Student {
+
+    Student() {
+        System.out.println("Default Constructor");
+    }
+
+    Student(int id) {
+        System.out.println("ID = " + id);
+    }
+
+    Student(int id, String name) {
+        System.out.println(id + " " + name);
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        new Student();
+        new Student(101);
+        new Student(101, "Rahul");
+
+    }
+}
+```
+
+### Output
+
+```
+Default Constructor
+ID = 101
+101 Rahul
+```
+
+---
+
+# `this()` Constructor
+
+`this()` is used to call another constructor of the same class.
+
+### Example
+
+```java
+class Student {
+
+    Student() {
+        this(101);
+        System.out.println("Default Constructor");
+    }
+
+    Student(int id) {
+        System.out.println("ID = " + id);
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+    }
+}
+```
+
+### Output
+
+```
+ID = 101
+Default Constructor
+```
+
+> **Rule:** `this()` must be the **first statement** inside a constructor.
+
+---
+
+# Constructor vs Method
+
+| Constructor | Method |
+|-------------|--------|
+| Same name as class | Any valid name |
+| No return type | Has a return type (or `void`) |
+| Called automatically | Called explicitly |
+| Used to initialize objects | Used to perform operations |
+
+---
+
+# Destructor
+
+A **destructor** is a special method that destroys an object and releases its resources.
+
+Languages like **C++** have destructors.
+
+### Example (C++)
+
+```cpp
+class Student {
+public:
+    ~Student() {
+        cout << "Object Destroyed";
+    }
+};
+```
+
+---
+
+# Does Java Have a Destructor?
+
+**No.**
+
+Java **does not have destructors**.
+
+Java automatically manages memory using the **Garbage Collector (GC)**.
+
+When an object is no longer referenced, the Garbage Collector reclaims its memory automatically.
+
+### Example
+
+```java
+Student s = new Student();
+
+s = null;
+```
+
+Now the object has no reference.
+
+Later, the Garbage Collector may remove it from memory automatically.
+
+> You cannot predict exactly **when** the Garbage Collector will run.
+
+---
+
+# What About `finalize()`?
+
+Earlier versions of Java provided the `finalize()` method, which could be called before an object was removed.
+
+```java
+class Student {
+
+    protected void finalize() {
+        System.out.println("Object Destroyed");
+    }
+
+}
+```
+
+However:
+
+- `finalize()` is **deprecated**.
+- It is **not guaranteed** to execute.
+- It should **not** be used in modern Java.
+
+Modern Java uses:
+- Garbage Collector (GC)
+- `try-with-resources`
+- `AutoCloseable`
+
+for proper resource management.
+
+---
+
+# Summary
+
+| Feature | Constructor | Destructor |
+|---------|-------------|------------|
+| Purpose | Initialize an object | Destroy an object |
+| Available in Java | ✅ Yes | ❌ No |
+| Called Automatically | Yes, when an object is created | Java uses the Garbage Collector instead |
+| Can Be Overloaded | ✅ Yes | Not applicable |
+
+---
+
+# Quick Revision
+
+- Constructor → Initializes an object.
+- Constructor name must match the class name.
+- Constructors have no return type.
+- Types:
+  - Default Constructor
+  - Parameterized Constructor
+- Constructors can be overloaded.
+- `this()` calls another constructor in the same class.
+- Java does **not** support destructors.
+- Memory is managed automatically by the Garbage Collector.
+- `finalize()` is deprecated and should not be used.
