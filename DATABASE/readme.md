@@ -102,7 +102,7 @@ N entities involved.
 
 ---
 
-# 5. Cardinality
+# 5. Cardinality -  Cardinality defines how many instances of one entity can be associated with instances of another entity in a relationship.
 
 | Type | Example |
 |------|----------|
