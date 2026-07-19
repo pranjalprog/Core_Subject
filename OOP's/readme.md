@@ -323,3 +323,284 @@ Dog can also have its own method:
 * `bark()`
 
 This saves code and allows reuse, which is the main purpose of inheritance in OOP.
+
+# `this`, `final`, `finally`, and `finalize()` in Java
+
+These are four different keywords/features in Java. Although their names are similar, they have completely different purposes.
+
+---
+
+# 1. `this` Keyword
+
+The `this` keyword refers to the **current object** of a class.
+
+It is mainly used to:
+- Access current object's variables.
+- Call current object's methods.
+- Call another constructor of the same class.
+
+## Why do we use `this`?
+
+Sometimes local variables and instance variables have the same name.
+
+Without `this`, Java gets confused.
+
+### Example
+
+```java
+class Student {
+    int id;
+
+    Student(int id) {
+        this.id = id;
+    }
+
+    void display() {
+        System.out.println(id);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student(101);
+        s.display();
+    }
+}
+```
+
+### Output
+
+```
+101
+```
+
+### Explanation
+
+```java
+this.id = id;
+```
+
+- `this.id` → Instance variable (current object's variable)
+- `id` → Constructor parameter
+
+Without `this`:
+
+```java
+id = id;
+```
+
+Both refer to the constructor parameter, so the instance variable would never be updated.
+
+---
+
+# 2. `final` Keyword
+
+The `final` keyword is used to **restrict modification**.
+
+It can be used with:
+- Variables
+- Methods
+- Classes
+
+---
+
+## A. Final Variable
+
+A final variable cannot be changed after it is assigned.
+
+### Example
+
+```java
+final int age = 20;
+
+age = 25;    // Error
+```
+
+### Example Program
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        final int age = 20;
+
+        System.out.println(age);
+    }
+}
+```
+
+### Output
+
+```
+20
+```
+
+---
+
+## B. Final Method
+
+A final method cannot be overridden by a child class.
+
+### Example
+
+```java
+class Animal {
+    final void eat() {
+        System.out.println("Eating");
+    }
+}
+
+class Dog extends Animal {
+
+    // void eat() {} ❌ Error
+}
+```
+
+---
+
+## C. Final Class
+
+A final class cannot be inherited.
+
+### Example
+
+```java
+final class Animal {
+}
+
+// class Dog extends Animal {} ❌ Error
+```
+
+---
+
+# Summary of `final`
+
+| Used With | Meaning |
+|-----------|---------|
+| Variable | Value cannot change |
+| Method | Cannot be overridden |
+| Class | Cannot be inherited |
+
+---
+
+# 3. `finally` Block
+
+`finally` is used with **exception handling**.
+
+The code inside the `finally` block **always executes**, whether an exception occurs or not.
+
+It is commonly used to:
+- Close files
+- Close database connections
+- Release resources
+
+## Syntax
+
+```java
+try {
+
+}
+catch(Exception e) {
+
+}
+finally {
+
+}
+```
+
+### Example
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        try {
+            int a = 10 / 0;
+        }
+        catch(Exception e) {
+            System.out.println("Exception caught");
+        }
+        finally {
+            System.out.println("Finally block executed");
+        }
+
+    }
+}
+```
+
+### Output
+
+```
+Exception caught
+Finally block executed
+```
+
+Even if an exception occurs, the `finally` block executes.
+
+---
+
+# 4. `finalize()` Method
+
+`finalize()` is a method of the `Object` class.
+
+It was intended to execute just before an object is removed from memory by the Garbage Collector.
+
+### Example
+
+```java
+class Student {
+
+    protected void finalize() {
+        System.out.println("Object destroyed");
+    }
+}
+```
+
+However, **`finalize()` is deprecated** and should **not** be used in modern Java.
+
+Modern Java uses:
+- `try-with-resources`
+- `AutoCloseable`
+- Proper resource management
+
+instead of `finalize()`.
+
+---
+
+# Difference Between `finally` and `finalize()`
+
+| finally | finalize() |
+|----------|------------|
+| Keyword | Method |
+| Used in exception handling | Used by Garbage Collector |
+| Always executes after `try`/`catch` | May execute before object removal |
+| Used to release resources | Deprecated and should not be used |
+
+---
+
+# Difference Between `final`, `finally`, and `finalize()`
+
+| Feature | Type | Purpose |
+|---------|------|---------|
+| `final` | Keyword | Prevent modification (variable, method, class) |
+| `finally` | Block | Executes after `try`/`catch`, used for cleanup |
+| `finalize()` | Method | Called by Garbage Collector before object removal (deprecated) |
+
+---
+
+# Quick Revision
+
+| Keyword | Purpose |
+|----------|---------|
+| `this` | Refers to the current object |
+| `final` | Prevents modification |
+| `finally` | Always executes after `try`/`catch` |
+| `finalize()` | Garbage Collector method (deprecated) |
+
+---
+
+# Easy Way to Remember
+
+- **`this`** → **This object**
+- **`final`** → **Cannot change**
+- **`finally`** → **Always runs**
+- **`finalize()`** → **Runs before object destruction (deprecated)**
