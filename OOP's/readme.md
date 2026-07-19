@@ -1158,3 +1158,201 @@ ClassName(ClassName obj) {
 ```
 
 - The copied object has the **same values** but is a **different object in memory**.
+
+# Polymorphism in Java
+
+**Polymorphism** means **"One thing, many forms."**
+
+In Java, polymorphism allows the **same method name** to perform **different tasks** depending on the situation.
+
+**Hinglish:**
+
+> **Ek hi method alag-alag situations mein alag tarike se behave kare, usse Polymorphism kehte hain.**
+
+---
+
+# Types of Polymorphism
+
+Java supports two types of polymorphism:
+
+1. Compile-Time Polymorphism (Method Overloading)
+2. Run-Time Polymorphism (Method Overriding)
+
+---
+
+# 1. Compile-Time Polymorphism (Method Overloading)
+
+Method overloading means **multiple methods have the same name but different parameters**.
+
+The compiler decides which method to call **at compile time**.
+
+## Example
+
+```java
+class Calculator {
+
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Calculator c = new Calculator();
+
+        System.out.println(c.add(10, 20));
+        System.out.println(c.add(10, 20, 30));
+
+    }
+}
+```
+
+### Output
+
+```
+30
+60
+```
+
+### Explanation
+
+The method name is the same (`add()`), but the parameters are different.
+
+Java decides which method to call while compiling the program.
+
+---
+
+# 2. Run-Time Polymorphism (Method Overriding)
+
+Method overriding means a child class provides its own implementation of a method already defined in the parent class.
+
+The JVM decides which method to execute **at runtime**.
+
+## Example
+
+```java
+class Animal {
+
+    void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animal a = new Dog();
+
+        a.sound();
+
+    }
+}
+```
+
+### Output
+
+```
+Dog barks
+```
+
+### Explanation
+
+Although the reference type is `Animal`, the actual object is `Dog`.
+
+So Java calls the `Dog` class method at runtime.
+
+---
+
+# Real-Life Example
+
+Imagine a person has one action: **Speak**.
+
+Different people speak differently.
+
+```
+Person
+   |
+Speak()
+
+Student  → "Asking Questions"
+Teacher  → "Teaching"
+Doctor   → "Giving Medical Advice"
+```
+
+The action (`Speak`) is the same, but the behavior changes.
+
+This is **Polymorphism**.
+
+---
+
+# Another Real-Life Example
+
+### Payment System
+
+```
+Payment
+
+Pay()
+```
+
+Different payment methods:
+
+- Credit Card → Pay using card
+- UPI → Pay using QR Code
+- Net Banking → Pay using bank account
+
+The method name is the same:
+
+```java
+pay();
+```
+
+But the behavior changes depending on the payment method.
+
+---
+
+# Method Overloading vs Method Overriding
+
+| Method Overloading | Method Overriding |
+|--------------------|-------------------|
+| Same class | Parent and Child class |
+| Same method name | Same method name |
+| Different parameters | Same parameters |
+| Compile-time | Run-time |
+| Increases readability | Provides different implementation |
+
+---
+
+# Summary Table
+
+| Type | Also Known As | Decision Taken By |
+|------|---------------|-------------------|
+| Compile-Time Polymorphism | Method Overloading | Compiler |
+| Run-Time Polymorphism | Method Overriding | JVM |
+
+---
+
+# Quick Revision
+
+- **Polymorphism** = One method, many forms.
+- **Compile-Time Polymorphism** = Method Overloading.
+- **Run-Time Polymorphism** = Method Overriding.
+- Overloading → Same method name, different parameters.
+- Overriding → Child class changes the parent's method implementation.
+- Compile-Time → Decided by the compiler.
+- Run-Time → Decided by the JVM.
