@@ -3168,242 +3168,398 @@ Agar interview se pehle time kam ho, to in topics ko **priority** do:
 
 
 
-JavaScript — Detailed Notes
-1. What is JavaScript?
+# JavaScript — Detailed Notes
 
-JavaScript (JS) ek programming language hai jo web pages ko interactive aur dynamic banane ke liye use hoti hai.
+## 1. What is JavaScript?
 
+**JavaScript (JS)** ek programming language hai jo web pages ko **interactive aur dynamic** banane ke liye use hoti hai.
+
+```text
 HTML → Structure
 CSS → Styling
 JavaScript → Behavior / Functionality
+```
 
-Example:
+### Example
 
-<button onclick="showMessage()">Click Me</button>
+```html
+<button onclick="hello()">Click Me</button>
 
 <script>
-function showMessage() {
-    alert("Hello World");
-}
-</script>
-
-Button click karne par JavaScript execute hogi.
-
-JavaScript ka use
-Web development
-Form validation
-DOM manipulation
-API calls
-Animations
-Interactive websites
-Backend development using Node.js
-Real-time applications
-2. JavaScript kaha run hoti hai?
-
-JavaScript traditionally browser ke JavaScript engine mein run hoti hai.
-
-Examples:
-
-Chrome → V8
-Firefox → SpiderMonkey
-Safari → JavaScriptCore
-
-JavaScript browser ke bahar bhi run kar sakti hai, jaise Node.js ke through.
-
-3. How to Add JavaScript in HTML?
-Inline JavaScript
-<button onclick="alert('Hello')">
-    Click
-</button>
-Internal JavaScript
-<script>
-    alert("Hello World");
-</script>
-External JavaScript
-
-script.js:
-
 function hello() {
     alert("Hello World");
 }
+</script>
+```
+
+Button click karne par JavaScript execute hogi.
+
+### JavaScript ka Use
+
+* Web development
+* Form validation
+* DOM manipulation
+* API calls
+* Animations
+* Interactive websites
+* Backend development using Node.js
+* Real-time applications
+
+---
+
+## 2. JavaScript Kahan Run Hoti Hai?
+
+JavaScript traditionally browser ke **JavaScript engine** mein run hoti hai.
+
+Examples:
+
+| Browser | JavaScript Engine |
+| ------- | ----------------- |
+| Chrome  | V8                |
+| Firefox | SpiderMonkey      |
+| Safari  | JavaScriptCore    |
+
+JavaScript browser ke bahar bhi run kar sakti hai, jaise **Node.js** ke through.
+
+---
+
+# 3. How to Add JavaScript in HTML?
+
+JavaScript ko HTML mein mainly 3 ways se add kar sakte hain:
+
+### 1. Inline JavaScript
+
+```html
+<button onclick="alert('Hello World')">
+    Click Me
+</button>
+```
+
+### 2. Internal JavaScript
+
+```html
+<script>
+function hello() {
+    alert("Hello World");
+}
+</script>
+```
+
+### 3. External JavaScript
+
+**script.js**
+
+```javascript
+function hello() {
+    alert("Hello World");
+}
+```
 
 HTML:
 
+```html
 <script src="script.js"></script>
+```
 
-External JavaScript large projects mein recommended hoti hai.
+**External JavaScript** large projects mein recommended hoti hai.
 
-4. Variables
+---
+
+# 4. Variables
 
 Variables data store karne ke liye use hote hain.
 
 JavaScript mein commonly:
 
+```javascript
 var name = "Rahul";
 let age = 21;
 const country = "India";
+```
 
-Modern JavaScript mein generally let aur const prefer kiye jaate hain.
+Modern JavaScript mein generally **`let` aur `const`** prefer kiye jaate hain.
 
-5. var, let, const
-var	let	const
-Function-scoped	Block-scoped	Block-scoped
-Redeclare possible	Same scope mein redeclare nahi	Same scope mein redeclare nahi
-Reassign possible	Reassign possible	Reassign nahi
-Older style	Modern	Modern
+---
 
-Example:
+# 5. `var`, `let`, `const`
 
+| `var`              | `let`                          | `const`                        |
+| ------------------ | ------------------------------ | ------------------------------ |
+| Function-scoped    | Block-scoped                   | Block-scoped                   |
+| Redeclare possible | Same scope mein redeclare nahi | Same scope mein redeclare nahi |
+| Reassign possible  | Reassign possible              | Reassign nahi                  |
+| Older style        | Modern                         | Modern                         |
+
+### Example
+
+```javascript
 let age = 20;
+
 age = 21;
 
 const pi = 3.14;
+
 // pi = 4;  // Error
-6. Data Types
+```
+
+---
+
+# 6. Data Types
 
 JavaScript mein different data types hote hain.
 
-Primitive Data Types
-String
+## Primitive Data Types
+
+Main primitive data types:
+
+* String
+* Number
+* Boolean
+* Undefined
+* Null
+* BigInt
+* Symbol
+
+### String
+
+```javascript
 let name = "Rahul";
-Number
+```
+
+### Number
+
+```javascript
 let age = 21;
 let price = 99.99;
-Boolean
+```
+
+### Boolean
+
+```javascript
 let isStudent = true;
-Undefined
+```
+
+### Undefined
+
+```javascript
 let x;
+
 console.log(x);
+```
 
 Output:
 
+```text
 undefined
-Null
+```
+
+### Null
+
+```javascript
 let value = null;
-BigInt
+```
+
+### BigInt
+
+```javascript
 let bigNumber = 12345678901234567890n;
-Symbol
+```
+
+### Symbol
 
 Unique identifiers ke liye use hota hai.
 
+```javascript
 let id = Symbol("id");
-7. Non-Primitive Data Types
+```
+
+---
+
+# 7. Non-Primitive Data Types
 
 Mainly:
 
-Object
-Array
-Function
+* Object
+* Array
+* Function
 
-Example:
+### Example
 
+```javascript
 let student = {
     name: "Rahul",
     age: 21
 };
-8. String
+```
+
+---
+
+# 8. String
 
 String text represent karti hai.
 
+```javascript
 let name = "Rahul";
+```
 
 Different ways:
 
+```javascript
 let a = "Hello";
 let b = 'Hello';
 let c = `Hello`;
+```
 
-Backticks ko template literals ke liye use kar sakte hain.
+Backticks ko **template literals** ke liye use kar sakte hain.
 
+### Template Literal Example
+
+```javascript
 let name = "Rahul";
 let age = 21;
 
 console.log(`My name is ${name} and I am ${age} years old.`);
-9. Operators
-Arithmetic Operators
-+
--
-*
-/
-%
-**
+```
+
+---
+
+# 9. Operators
+
+JavaScript mein different operators hote hain.
+
+## Arithmetic Operators
+
+```text
++   Addition
+-   Subtraction
+*   Multiplication
+/   Division
+%   Modulus
+**  Exponentiation
+```
 
 Example:
 
+```javascript
 let a = 10;
 let b = 3;
 
 console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
 console.log(a % b);
-Comparison Operators
-==
-===
-!=
-!==
->
-<
->=
-<=
+console.log(a ** b);
+```
+
+## Comparison Operators
+
+```text
+==    Equal
+===   Strict equal
+!=    Not equal
+!==   Strict not equal
+>     Greater than
+<     Less than
+>=    Greater than or equal
+<=    Less than or equal
+```
 
 Example:
 
+```javascript
 console.log(10 == "10");   // true
 console.log(10 === "10");  // false
-10. == vs ===
+```
 
-Ye very important interview question hai.
+---
 
-==
+# 10. `==` vs `===`
+
+Ye **very important interview question** hai.
+
+## `==`
 
 Value compare karta hai aur type coercion kar sakta hai.
 
+```javascript
 10 == "10"
+```
 
 Result:
 
+```text
 true
-===
+```
+
+## `===`
 
 Value + data type dono compare karta hai.
 
+```javascript
 10 === "10"
+```
 
 Result:
 
+```text
 false
-Interview answer
+```
 
-== performs loose equality comparison, while === performs strict equality comparison without type coercion.
+### Interview Answer
 
-Generally === prefer karna better hota hai when strict comparison chahiye.
+> `==` performs loose equality comparison and may perform type coercion, while `===` performs strict equality comparison without type coercion.
 
-11. Logical Operators
-&&   // AND
-||   // OR
-!    // NOT
+Generally, jab strict comparison chahiye ho to **`===` prefer karna better hota hai**.
 
-Example:
+---
 
+# 11. Logical Operators
+
+```javascript
+&&    // AND
+||    // OR
+!     // NOT
+```
+
+### Example
+
+```javascript
 let age = 21;
 let hasID = true;
 
 if (age >= 18 && hasID) {
     console.log("Allowed");
 }
-12. Conditional Statements
-if
+```
+
+---
+
+# 12. Conditional Statements
+
+## `if`
+
+```javascript
 let age = 20;
 
 if (age >= 18) {
     console.log("Adult");
 }
-if-else
+```
+
+## `if-else`
+
+```javascript
 if (age >= 18) {
     console.log("Adult");
 } else {
     console.log("Minor");
 }
-else-if
+```
+
+## `else-if`
+
+```javascript
 if (marks >= 90) {
     console.log("A");
 } else if (marks >= 60) {
@@ -3411,23 +3567,35 @@ if (marks >= 90) {
 } else {
     console.log("C");
 }
-13. Ternary Operator
+```
 
-Short if-else ke liye.
+---
 
+# 13. Ternary Operator
+
+Short `if-else` ke liye ternary operator use hota hai.
+
+```javascript
 let age = 20;
 
 let result = age >= 18 ? "Adult" : "Minor";
 
 console.log(result);
+```
 
-Syntax:
+### Syntax
 
+```text
 condition ? trueValue : falseValue
-14. Switch
+```
 
-Multiple fixed cases ke liye useful.
+---
 
+# 14. Switch
+
+Multiple fixed cases ke liye `switch` useful hota hai.
+
+```javascript
 let day = 2;
 
 switch (day) {
@@ -3442,35 +3610,61 @@ switch (day) {
     default:
         console.log("Invalid");
 }
-15. Loops
-for loop
+```
+
+---
+
+# 15. Loops
+
+## `for` Loop
+
+```javascript
 for (let i = 1; i <= 5; i++) {
     console.log(i);
 }
-while loop
+```
+
+## `while` Loop
+
+```javascript
 let i = 1;
 
 while (i <= 5) {
     console.log(i);
     i++;
 }
-do-while
+```
+
+## `do-while` Loop
+
+```javascript
 let i = 1;
 
 do {
     console.log(i);
     i++;
 } while (i <= 5);
-16. Functions
+```
+
+---
+
+# 16. Functions
 
 Function reusable block of code hota hai.
 
+```javascript
 function greet() {
     console.log("Hello");
 }
 
 greet();
-17. Function with Parameters
+```
+
+---
+
+# 17. Function with Parameters
+
+```javascript
 function add(a, b) {
     return a + b;
 }
@@ -3478,104 +3672,165 @@ function add(a, b) {
 let result = add(10, 20);
 
 console.log(result);
+```
 
 Output:
 
+```text
 30
-18. Function Expression
+```
+
+---
+
+# 18. Function Expression
 
 Function ko variable mein store kar sakte hain.
 
+```javascript
 const add = function(a, b) {
     return a + b;
 };
 
 console.log(add(10, 20));
-19. Arrow Function
+```
+
+---
+
+# 19. Arrow Function
 
 ES6 mein arrow functions introduce hue.
 
+```javascript
 const add = (a, b) => {
     return a + b;
 };
+```
 
-Short version:
+### Short Version
 
+```javascript
 const add = (a, b) => a + b;
+```
 
 Another example:
 
+```javascript
 const square = x => x * x;
-20. Arrays
+```
+
+---
+
+# 20. Arrays
 
 Array multiple values store karne ke liye use hota hai.
 
+```javascript
 let fruits = ["Apple", "Mango", "Banana"];
+```
 
 Access:
 
+```javascript
 console.log(fruits[0]);
+```
 
 Output:
 
+```text
 Apple
-21. Important Array Methods
-push()
+```
+
+---
+
+# 21. Important Array Methods
+
+## `push()`
 
 End mein element add karta hai.
 
+```javascript
 fruits.push("Orange");
-pop()
+```
+
+## `pop()`
 
 Last element remove karta hai.
 
+```javascript
 fruits.pop();
-shift()
+```
+
+## `shift()`
 
 First element remove karta hai.
 
+```javascript
 fruits.shift();
-unshift()
+```
+
+## `unshift()`
 
 Start mein element add karta hai.
 
+```javascript
 fruits.unshift("Grapes");
-22. map()
+```
 
-Har element par operation apply karke new array return karta hai.
+---
 
+# 22. `map()`
+
+Har element par operation apply karke **new array** return karta hai.
+
+```javascript
 let numbers = [1, 2, 3, 4];
 
 let result = numbers.map(x => x * 2);
 
 console.log(result);
+```
 
 Output:
 
+```text
 [2, 4, 6, 8]
+```
 
-map → transform
+### Remember
 
-23. filter()
+> `map` → Transform
 
-Condition satisfy karne wale elements ka new array return karta hai.
+---
 
+# 23. `filter()`
+
+Condition satisfy karne wale elements ka **new array** return karta hai.
+
+```javascript
 let numbers = [1, 2, 3, 4, 5];
 
 let result = numbers.filter(x => x % 2 === 0);
 
 console.log(result);
+```
 
 Output:
 
+```text
 [2, 4]
+```
 
-filter → select
+### Remember
 
-24. reduce()
+> `filter` → Select
 
-Array ke elements ko combine karke generally single result produce karta hai.
+---
 
+# 24. `reduce()`
+
+Array ke elements ko combine karke generally **single result** produce karta hai.
+
+```javascript
 let numbers = [1, 2, 3, 4];
 
 let sum = numbers.reduce((total, current) => {
@@ -3583,28 +3838,44 @@ let sum = numbers.reduce((total, current) => {
 }, 0);
 
 console.log(sum);
+```
 
 Output:
 
+```text
 10
+```
 
-reduce → combine
+### Remember
 
-25. Objects
+> `reduce` → Combine
+
+---
+
+# 25. Objects
 
 Object key-value pairs store karta hai.
 
+```javascript
 let student = {
     name: "Rahul",
     age: 21,
     course: "JavaScript"
 };
+```
 
-Access:
+### Access
 
+```javascript
 console.log(student.name);
 console.log(student["age"]);
-26. Adding and Updating Object Properties
+```
+
+---
+
+# 26. Adding and Updating Object Properties
+
+```javascript
 let student = {
     name: "Rahul",
     age: 21
@@ -3613,10 +3884,15 @@ let student = {
 student.city = "Delhi";
 
 student.age = 22;
-27. Destructuring
+```
+
+---
+
+# 27. Destructuring
 
 Object se values easily extract kar sakte hain.
 
+```javascript
 const student = {
     name: "Rahul",
     age: 21
@@ -3626,27 +3902,41 @@ const { name, age } = student;
 
 console.log(name);
 console.log(age);
+```
 
-Array destructuring:
+## Array Destructuring
 
+```javascript
 const numbers = [10, 20];
 
 const [a, b] = numbers;
-28. Spread Operator
+```
 
-Spread operator ... values ko expand karta hai.
+---
 
+# 28. Spread Operator
+
+Spread operator `...` values ko expand karta hai.
+
+## Array Example
+
+```javascript
 const a = [1, 2, 3];
+
 const b = [...a, 4, 5];
 
 console.log(b);
+```
 
 Output:
 
+```text
 [1, 2, 3, 4, 5]
+```
 
-Object example:
+## Object Example
 
+```javascript
 const user = {
     name: "Rahul",
     age: 21
@@ -3656,83 +3946,142 @@ const updatedUser = {
     ...user,
     city: "Delhi"
 };
-29. Rest Parameter
+```
+
+---
+
+# 29. Rest Parameter
 
 Rest parameter multiple arguments ko collect karta hai.
 
+```javascript
 function sum(...numbers) {
     return numbers.reduce((a, b) => a + b, 0);
 }
 
 console.log(sum(1, 2, 3, 4));
-30. DOM
+```
 
-DOM = Document Object Model
+---
 
-Browser HTML document ko ek tree-like object structure mein represent karta hai.
+# 30. DOM
+
+**DOM = Document Object Model**
+
+Browser HTML document ko ek **tree-like object structure** mein represent karta hai.
 
 HTML:
 
+```html
 <h1 id="title">Hello</h1>
+```
 
 JavaScript:
 
+```javascript
 const title = document.getElementById("title");
 
 title.innerText = "Welcome";
+```
 
 JavaScript HTML content ko dynamically change kar sakti hai.
 
-31. Selecting HTML Elements
-getElementById()
+---
+
+# 31. Selecting HTML Elements
+
+## `getElementById()`
+
+```javascript
 document.getElementById("title");
-querySelector()
+```
+
+## `querySelector()`
+
+```javascript
 document.querySelector(".student");
-querySelectorAll()
+```
+
+## `querySelectorAll()`
+
+```javascript
 document.querySelectorAll(".student");
-getElementsByClassName()
+```
+
+## `getElementsByClassName()`
+
+```javascript
 document.getElementsByClassName("student");
-32. Changing HTML Content
+```
+
+---
+
+# 32. Changing HTML Content
+
+```javascript
 document.getElementById("title").innerText = "Hello";
+```
 
-innerHTML HTML content set/read kar sakta hai:
+`innerHTML` HTML content set/read kar sakta hai:
 
-element.innerHTML = "<b>Hello</b>";
+```javascript
+element.innerHTML = "Hello";
+```
 
-User-controlled untrusted content ke saath innerHTML carefully use karna chahiye.
+> User-controlled untrusted content ke saath `innerHTML` carefully use karna chahiye.
 
-33. Changing CSS using JavaScript
+---
+
+# 33. Changing CSS Using JavaScript
+
+```javascript
 const title = document.getElementById("title");
 
 title.style.color = "red";
 title.style.fontSize = "30px";
+```
 
 Better approach often CSS class toggle karna hota hai:
 
+```javascript
 title.classList.add("active");
-34. Events
+```
+
+---
+
+# 34. Events
 
 Event matlab browser mein koi action hona.
 
 Examples:
 
-click
-submit
-mouseover
-keydown
-change
-input
-load
-35. Event Listener
+* `click`
+* `submit`
+* `mouseover`
+* `keydown`
+* `change`
+* `input`
+* `load`
+
+---
+
+# 35. Event Listener
 
 Recommended way:
 
+```javascript
 const button = document.getElementById("btn");
 
 button.addEventListener("click", function() {
     alert("Button clicked");
 });
-36. Form Handling
+```
+
+---
+
+# 36. Form Handling
+
+```javascript
 const form = document.getElementById("form");
 
 form.addEventListener("submit", function(event) {
@@ -3740,41 +4089,53 @@ form.addEventListener("submit", function(event) {
 
     console.log("Form submitted");
 });
+```
 
-preventDefault() browser ke default form submission behavior ko prevent karta hai.
+`preventDefault()` browser ke default form submission behavior ko prevent karta hai.
 
-37. Event Bubbling
+---
 
-Event bubbling mein event child element se parent elements ki taraf propagate karta hai.
+# 37. Event Bubbling
+
+Event bubbling mein event **child element se parent elements** ki taraf propagate karta hai.
 
 Example:
 
+```text
 button
-  ↓
+   ↓
 div
-  ↓
+   ↓
 body
+```
 
 Agar button click hua, event parent elements tak bubble kar sakta hai.
 
-38. Event Capturing
+---
+
+# 38. Event Capturing
 
 Capturing bubbling ka reverse phase hai.
 
+```text
 body
- ↓
+  ↓
 div
- ↓
+  ↓
 button
+```
 
 Event parent se child ki direction mein travel karta hai.
 
-39. this Keyword
+---
 
-this generally current execution context/object ko refer karta hai, lekin iska exact behavior context par depend karta hai.
+# 39. `this` Keyword
+
+`this` generally current execution context/object ko refer karta hai, lekin iska exact behavior context par depend karta hai.
 
 Example:
 
+```javascript
 const student = {
     name: "Rahul",
 
@@ -3784,16 +4145,25 @@ const student = {
 };
 
 student.greet();
+```
 
 Output:
 
+```text
 Rahul
-40. Arrow Function and this
+```
 
-Arrow functions ka apna this nahi hota. Ye surrounding lexical context se this leti hain.
+---
+
+# 40. Arrow Function and `this`
+
+Arrow functions ka apna `this` nahi hota.
+
+Ye surrounding **lexical context** se `this` leti hain.
 
 Example:
 
+```javascript
 const student = {
     name: "Rahul",
 
@@ -3807,46 +4177,63 @@ const student = {
 };
 
 student.greet();
-41. Scope
+```
+
+---
+
+# 41. Scope
 
 Scope decide karta hai ki variable kahan accessible hai.
 
 Main types:
 
-Global scope
-Function scope
-Block scope
+* Global Scope
+* Function Scope
+* Block Scope
 
 Example:
 
+```javascript
 let globalVar = "Global";
 
 function test() {
     let localVar = "Local";
 }
+```
 
-localVar function ke bahar directly accessible nahi hai.
+`localVar` function ke bahar directly accessible nahi hai.
 
-42. Hoisting
+---
 
-JavaScript execution se pehle declarations ko process karti hai. Is behavior ko commonly hoisting kaha jata hai.
+# 42. Hoisting
+
+JavaScript execution se pehle declarations ko process karti hai. Is behavior ko commonly **hoisting** kaha jata hai.
 
 Example:
 
+```javascript
 console.log(x);
 
 var x = 10;
+```
 
-var declaration hoist hoti hai, isliye result undefined hota hai.
+`var` declaration hoist hoti hai, isliye result:
 
-let aur const declarations bhi scope ke beginning se associated hoti hain, but initialization se pehle access karne par Temporal Dead Zone (TDZ) ke karan error milta hai.
+```text
+undefined
+```
 
-43. Closure
+`let` aur `const` declarations bhi scope ke beginning se associated hoti hain, lekin initialization se pehle access karne par **Temporal Dead Zone (TDZ)** ke karan error milta hai.
 
-Closure tab hota hai jab inner function apne outer function ke variables ko remember/access kar sakta hai, even after outer function finish ho gaya ho.
+---
+
+# 43. Closure
+
+Closure tab hota hai jab inner function apne outer function ke variables ko **remember/access** kar sakta hai, even after outer function finish ho gaya ho.
 
 Example:
 
+```javascript
 function outer() {
     let count = 0;
 
@@ -3860,22 +4247,29 @@ const counter = outer();
 
 console.log(counter());
 console.log(counter());
+```
 
 Output:
 
+```text
 1
 2
+```
 
-Closure ka use:
+### Closure ke Uses
 
-Data privacy
-Counters
-Callbacks
-Function factories
-44. Callback Function
+* Data privacy
+* Counters
+* Callbacks
+* Function factories
 
-Jo function kisi doosre function ko argument ke form mein pass hota hai, use callback function kehte hain.
+---
 
+# 44. Callback Function
+
+Jo function kisi doosre function ko argument ke form mein pass hota hai, use **callback function** kehte hain.
+
+```javascript
 function greet(name, callback) {
     console.log("Hello " + name);
     callback();
@@ -3886,49 +4280,67 @@ function done() {
 }
 
 greet("Rahul", done);
-45. Synchronous vs Asynchronous JavaScript
-Synchronous
+```
+
+---
+
+# 45. Synchronous vs Asynchronous JavaScript
+
+## Synchronous
 
 Code generally one statement at a time execute hota hai.
 
+```text
 Task 1
   ↓
 Task 2
   ↓
 Task 3
-Asynchronous
+```
 
-Long-running operations ko wait karte hue baaki work continue ho sakta hai.
+## Asynchronous
+
+Long-running operations ke wait ke dauran baaki work continue ho sakta hai.
 
 Examples:
 
-API calls
-Timers
-File operations
-46. setTimeout()
+* API calls
+* Timers
+* File operations
 
-Code ko specified delay ke baad execute karta hai.
+---
 
+# 46. `setTimeout()`
+
+Code ko specified delay ke baad execute karne ke liye `setTimeout()` use hota hai.
+
+```javascript
 setTimeout(() => {
     console.log("Hello");
 }, 2000);
+```
 
 Approximately 2 seconds baad callback execute hone ke liye schedule hota hai.
 
-47. Promise
+---
 
-Promise asynchronous operation ka eventual result represent karta hai.
+# 47. Promise
+
+Promise asynchronous operation ka **eventual result** represent karta hai.
 
 Promise ki states:
 
+```text
 Pending
    ↓
 Fulfilled
    OR
 Rejected
+```
 
 Example:
 
+```javascript
 const promise = new Promise((resolve, reject) => {
 
     let success = true;
@@ -3940,7 +4352,13 @@ const promise = new Promise((resolve, reject) => {
     }
 
 });
-48. .then() and .catch()
+```
+
+---
+
+# 48. `.then()` and `.catch()`
+
+```javascript
 promise
     .then(result => {
         console.log(result);
@@ -3948,14 +4366,18 @@ promise
     .catch(error => {
         console.log(error);
     });
+```
 
-then() → success handle
-catch() → error handle
+* `.then()` → Success handle
+* `.catch()` → Error handle
 
-49. Async/Await
+---
 
-Promises ko readable way mein handle karne ke liye async/await use hota hai.
+# 49. Async/Await
 
+Promises ko readable way mein handle karne ke liye `async/await` use hota hai.
+
+```javascript
 async function getData() {
     try {
         const response = await fetch("/api/users");
@@ -3966,20 +4388,29 @@ async function getData() {
         console.log(error);
     }
 }
+```
 
-await promise settle hone tak us async function ke execution ko pause karta hai.
+`await` promise settle hone tak us `async` function ke execution ko pause karta hai.
 
-50. Fetch API
+---
 
-Server/API se data request karne ke liye fetch() use kar sakte hain.
+# 50. Fetch API
 
-GET
+Server/API se data request karne ke liye `fetch()` use kar sakte hain.
+
+## GET
+
+```javascript
 fetch("/api/users")
     .then(response => response.json())
     .then(data => {
         console.log(data);
     });
-POST
+```
+
+## POST
+
+```javascript
 fetch("/api/users", {
     method: "POST",
 
@@ -3992,45 +4423,67 @@ fetch("/api/users", {
         age: 21
     })
 });
-51. JSON
+```
 
-JSON = JavaScript Object Notation
+---
+
+# 51. JSON
+
+**JSON = JavaScript Object Notation**
 
 API communication mein commonly use hota hai.
 
+### JSON
+
+```json
 {
     "name": "Rahul",
     "age": 21
 }
+```
 
-JavaScript object:
+### JavaScript Object
 
+```javascript
 const user = {
     name: "Rahul",
     age: 21
 };
-JSON.stringify()
+```
+
+## `JSON.stringify()`
 
 Object → JSON string
 
+```javascript
 const json = JSON.stringify(user);
-JSON.parse()
+```
+
+## `JSON.parse()`
 
 JSON string → JavaScript object
 
+```javascript
 const obj = JSON.parse(json);
-52. Error Handling
+```
 
-JavaScript mein try...catch use kar sakte hain.
+---
 
+# 52. Error Handling
+
+JavaScript mein `try...catch` use kar sakte hain.
+
+```javascript
 try {
     let result = riskyOperation();
 } catch (error) {
     console.log("Error:", error);
 }
+```
 
-Finally:
+## `finally`
 
+```javascript
 try {
     console.log("Try");
 } catch (error) {
@@ -4038,64 +4491,101 @@ try {
 } finally {
     console.log("Always runs");
 }
-53. Local Storage
+```
 
-Browser mein data store karne ke liye localStorage use hota hai.
+`finally` generally success ya error dono cases mein execute hota hai.
 
+---
+
+# 53. Local Storage
+
+Browser mein data store karne ke liye `localStorage` use hota hai.
+
+## Set
+
+```javascript
 localStorage.setItem("name", "Rahul");
+```
 
-Get:
+## Get
 
+```javascript
 let name = localStorage.getItem("name");
+```
 
-Remove:
+## Remove
 
+```javascript
 localStorage.removeItem("name");
+```
 
-Clear:
+## Clear
 
+```javascript
 localStorage.clear();
+```
 
-Important: localStorage values strings ke form mein store karta hai.
+### Important
+
+`localStorage` values ko **strings** ke form mein store karta hai.
 
 Object store karna ho:
 
+```javascript
 localStorage.setItem(
     "user",
     JSON.stringify(user)
 );
-54. Session Storage
+```
 
-sessionStorage bhi key-value data store karta hai, but data generally current browser tab/session ke lifetime se associated hota hai.
+---
 
+# 54. Session Storage
+
+`sessionStorage` bhi key-value data store karta hai, but data generally **current browser tab/session ke lifetime** se associated hota hai.
+
+```javascript
 sessionStorage.setItem("name", "Rahul");
-55. LocalStorage vs SessionStorage
-LocalStorage	SessionStorage
-Data longer persist kar sakta hai	Tab/session ke lifetime se associated
-Browser storage	Browser storage
-localStorage	sessionStorage
-Manually clear/remove karna padta hai	Tab close hone par normally clear ho jata hai
-56. ES6 Features
+```
 
-ES6 / ECMAScript 2015 ne JavaScript mein many important features introduce kiye.
+---
 
-Important:
+# 55. LocalStorage vs SessionStorage
 
-let
-const
-Arrow functions
-Template literals
-Destructuring
-Spread operator
-Rest parameters
-Classes
-Modules
-Promises
-Default parameters
-57. Classes
+| LocalStorage                          | SessionStorage                                |
+| ------------------------------------- | --------------------------------------------- |
+| Data longer persist kar sakta hai     | Tab/session ke lifetime se associated         |
+| Browser storage                       | Browser storage                               |
+| `localStorage`                        | `sessionStorage`                              |
+| Manually clear/remove karna padta hai | Tab close hone par normally clear ho jata hai |
 
-JavaScript mein classes objects create karne ke liye blueprint provide karti hain.
+---
 
+# 56. ES6 Features
+
+**ES6 / ECMAScript 2015** ne JavaScript mein many important features introduce kiye.
+
+Important features:
+
+* `let`
+* `const`
+* Arrow functions
+* Template literals
+* Destructuring
+* Spread operator
+* Rest parameters
+* Classes
+* Modules
+* Promises
+* Default parameters
+
+---
+
+# 57. Classes
+
+JavaScript mein classes objects create karne ke liye **blueprint** provide karti hain.
+
+```javascript
 class Student {
 
     constructor(name, age) {
@@ -4111,10 +4601,15 @@ class Student {
 const student = new Student("Rahul", 21);
 
 student.greet();
-58. Inheritance
+```
+
+---
+
+# 58. Inheritance
 
 Ek class doosri class ki properties/methods inherit kar sakti hai.
 
+```javascript
 class Person {
     greet() {
         console.log("Hello");
@@ -4131,29 +4626,48 @@ const s = new Student();
 
 s.greet();
 s.study();
-59. Modules
+```
+
+---
+
+# 59. Modules
 
 Large applications mein JavaScript ko multiple files mein divide kar sakte hain.
 
-Export
+## Export
+
+```javascript
 export function add(a, b) {
     return a + b;
 }
-Import
+```
+
+## Import
+
+```javascript
 import { add } from "./math.js";
 
 console.log(add(10, 20));
+```
 
-HTML:
+HTML mein module use karne ke liye:
 
+```html
 <script type="module" src="app.js"></script>
-60. Shallow Copy vs Deep Copy
-Shallow Copy
+```
+
+---
+
+# 60. Shallow Copy vs Deep Copy
+
+## Shallow Copy
 
 Nested objects/arrays ke references shared ho sakte hain.
 
+```javascript
 const a = {
     name: "Rahul",
+
     address: {
         city: "Delhi"
     }
@@ -4164,46 +4678,61 @@ const b = { ...a };
 b.address.city = "Mumbai";
 
 console.log(a.address.city);
+```
 
-Nested object shared hone ki wajah se original bhi affect ho sakta hai.
+Nested object shared hone ki wajah se original object bhi affect ho sakta hai.
 
-Deep Copy
+---
 
-Nested data ki independent copy create karne ka goal hota hai.
+## Deep Copy
 
-Simple data ke liye:
+Deep copy ka goal nested data ki **independent copy** create karna hota hai.
 
+Modern JavaScript mein:
+
+```javascript
 const b = structuredClone(a);
-⭐ Most Important JavaScript Interview Questions
+```
 
-Fresher interview ke liye ye topics must prepare karo:
+Isse nested data ki independent copy create ki ja sakti hai, subject to the types supported by `structuredClone()`.
 
-What is JavaScript?
-var vs let vs const
-Data types
-== vs ===
-null vs undefined
-Function vs Arrow Function
-Array methods — map, filter, reduce
-Object and Array
-Destructuring
-Spread vs Rest
-DOM
-Events
-Event bubbling/capturing
-Scope
-Hoisting
-Closure
-Callback
-Promise
-Async/Await
-Fetch API
-JSON
-LocalStorage vs SessionStorage
-this
-Classes and inheritance
-Synchronous vs Asynchronous JavaScript
-🧠 Complete Revision Flow
+---
+
+# ⭐ Most Important JavaScript Interview Questions
+
+Fresher interview ke liye ye topics **must prepare** karo:
+
+1. What is JavaScript?
+2. `var` vs `let` vs `const`
+3. Data Types
+4. `==` vs `===`
+5. `null` vs `undefined`
+6. Function vs Arrow Function
+7. Array Methods — `map`, `filter`, `reduce`
+8. Object and Array
+9. Destructuring
+10. Spread vs Rest
+11. DOM
+12. Events
+13. Event Bubbling / Capturing
+14. Scope
+15. Hoisting
+16. Closure
+17. Callback
+18. Promise
+19. Async/Await
+20. Fetch API
+21. JSON
+22. LocalStorage vs SessionStorage
+23. `this`
+24. Classes and Inheritance
+25. Synchronous vs Asynchronous JavaScript
+
+---
+
+# 🧠 Complete Revision Flow
+
+```text
 JavaScript
     ↓
 Variables & Data Types
@@ -4237,3 +4766,73 @@ JSON
 Storage
     ↓
 Classes & Modules
+```
+
+---
+
+# 🎯 Quick Revision
+
+```text
+JavaScript
+→ Programming Language
+
+HTML
+→ Structure
+
+CSS
+→ Styling
+
+JavaScript
+→ Behavior / Functionality
+
+let / const
+→ Modern variables
+
+Array
+→ Multiple values
+
+Object
+→ Key-value pairs
+
+map()
+→ Transform
+
+filter()
+→ Select
+
+reduce()
+→ Combine
+
+DOM
+→ HTML document ko JavaScript se access/manipulate karna
+
+Event
+→ User/browser action
+
+Callback
+→ Function passed as argument
+
+Promise
+→ Async operation ka eventual result
+
+async/await
+→ Promises ko readable way mein handle karna
+
+fetch()
+→ API request
+
+JSON
+→ Data exchange format
+
+Closure
+→ Inner function outer variables ko remember karta hai
+
+localStorage
+→ Persistent browser storage
+
+sessionStorage
+→ Tab/session-based browser storage
+
+Class
+→ Object creation ka blueprint
+```
