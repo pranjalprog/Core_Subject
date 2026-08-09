@@ -1651,3 +1651,2589 @@ JS   → Functionality
 ### Interview Tip
 
 **External CSS aur External JavaScript large projects mein preferred hote hain** because code separate, reusable aur maintainable rehta hai.
+
+
+
+
+# CSS Interview Questions & Answers
+
+---
+
+# 1. What is CSS?
+
+**CSS = Cascading Style Sheets**
+
+CSS ka use HTML webpage ko **style aur design** karne ke liye hota hai.
+
+CSS se hum control kar sakte hain:
+
+* Color
+* Font
+* Size
+* Spacing
+* Layout
+* Position
+* Responsive design
+* Animation
+
+Example:
+
+```css
+h1 {
+    color: blue;
+    font-size: 30px;
+}
+```
+
+HTML:
+
+```html
+<h1>Hello World</h1>
+```
+
+### Interview Answer
+
+> **CSS is a stylesheet language used to control the presentation, styling, and layout of HTML elements on a webpage.**
+
+---
+
+# 2. What are the Different Ways to Add CSS?
+
+CSS ko HTML mein **3 ways** se add kar sakte hain:
+
+1. Inline CSS
+2. Internal CSS
+3. External CSS
+
+---
+
+## 1. Inline CSS
+
+CSS directly HTML element ke `style` attribute mein likhte hain.
+
+```html
+<p style="color: red;">Hello World</p>
+```
+
+### Advantage
+
+* Quick styling ke liye useful.
+
+### Disadvantage
+
+* Large projects mein maintain karna difficult hota hai.
+
+---
+
+## 2. Internal CSS
+
+CSS ko same HTML file ke `<style>` tag ke andar likhte hain.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+    p {
+        color: blue;
+    }
+</style>
+
+</head>
+
+<body>
+
+<p>Hello World</p>
+
+</body>
+</html>
+```
+
+---
+
+## 3. External CSS
+
+CSS ko separate `.css` file mein likhte hain.
+
+**style.css**
+
+```css
+p {
+    color: green;
+}
+```
+
+HTML:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+### Advantage
+
+* Large projects ke liye best.
+* Reusable hota hai.
+* Maintain karna easy hota hai.
+
+### Interview Answer
+
+> **CSS can be added using Inline CSS, Internal CSS, and External CSS. External CSS is generally preferred for large projects because it provides better reusability and maintainability.**
+
+---
+
+# 3. Difference Between Inline, Internal and External CSS
+
+| Type     | CSS kahan likhte hain?                 | Best Use                |
+| -------- | -------------------------------------- | ----------------------- |
+| Inline   | HTML element ke `style` attribute mein | Quick/specific styling  |
+| Internal | `<style>` tag mein                     | Single webpage          |
+| External | Separate `.css` file mein              | Large/multiple webpages |
+
+### Example
+
+**Inline:**
+
+```html
+<p style="color: red;">Hello</p>
+```
+
+**Internal:**
+
+```html
+<style>
+    p {
+        color: red;
+    }
+</style>
+```
+
+**External:**
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+### Interview Answer
+
+> **Inline CSS is written directly inside an HTML element, Internal CSS is written inside a `<style>` tag, and External CSS is written in a separate CSS file.**
+
+---
+
+# 4. What is a CSS Selector?
+
+CSS Selector ka use HTML elements ko **select/target** karne ke liye hota hai, taaki un par CSS styles apply ki ja sakein.
+
+Basic syntax:
+
+```css
+selector {
+    property: value;
+}
+```
+
+Example:
+
+```css
+p {
+    color: blue;
+}
+```
+
+Yahan `p` ek selector hai.
+
+## Types of Selectors
+
+### 1. Element Selector
+
+HTML tag ko select karta hai.
+
+```css
+p {
+    color: blue;
+}
+```
+
+Ye saare `<p>` elements ko select karega.
+
+---
+
+### 2. Class Selector
+
+Class ko select karta hai.
+
+`.` symbol use hota hai.
+
+```css
+.student {
+    color: green;
+}
+```
+
+HTML:
+
+```html
+<p class="student">Rahul</p>
+```
+
+---
+
+### 3. ID Selector
+
+ID ko select karta hai.
+
+`#` symbol use hota hai.
+
+```css
+#title {
+    color: red;
+}
+```
+
+HTML:
+
+```html
+<h1 id="title">Hello</h1>
+```
+
+---
+
+### 4. Universal Selector
+
+Page ke saare elements ko select karta hai.
+
+`*` use hota hai.
+
+```css
+* {
+    margin: 0;
+    padding: 0;
+}
+```
+
+---
+
+### 5. Attribute Selector
+
+Element ko attribute ke basis par select karta hai.
+
+```css
+input[type="text"] {
+    border: 1px solid black;
+}
+```
+
+Ye sirf `type="text"` wale input ko select karega.
+
+### Interview Answer
+
+> **A CSS selector is a pattern used to select HTML elements so that CSS styles can be applied to them.**
+
+---
+
+# 5. What is the Difference Between `id` and `class` in CSS?
+
+`id` aur `class` dono HTML elements ko identify/select karne ke liye use hote hain.
+
+## ID
+
+ID selector ke liye `#` use hota hai.
+
+```css
+#title {
+    color: red;
+}
+```
+
+HTML:
+
+```html
+<h1 id="title">Hello</h1>
+```
+
+Ek `id` generally **unique** hona chahiye.
+
+---
+
+## Class
+
+Class selector ke liye `.` use hota hai.
+
+```css
+.student {
+    color: blue;
+}
+```
+
+HTML:
+
+```html
+<p class="student">Rahul</p>
+<p class="student">Aman</p>
+```
+
+Ek class ko **multiple elements** par use kar sakte hain.
+
+---
+
+## Difference
+
+| ID                                  | Class                                  |
+| ----------------------------------- | -------------------------------------- |
+| Generally unique                    | Multiple elements par use ho sakti hai |
+| `#` use hota hai                    | `.` use hota hai                       |
+| `#title`                            | `.student`                             |
+| Specific element identify karta hai | Elements ko group/style karta hai      |
+
+### Interview Answer
+
+> **ID is generally used to uniquely identify an element, while class is used to group and style multiple elements.**
+
+---
+
+# 6. What is CSS Box Model?
+
+CSS Box Model batata hai ki browser mein har HTML element ek **rectangular box** ki tarah behave karta hai.
+
+Box Model ke 4 main parts hain:
+
+```text
+Content
+   ↓
+Padding
+   ↓
+Border
+   ↓
+Margin
+```
+
+## 1. Content
+
+Element ka actual content.
+
+```html
+<p>Hello World</p>
+```
+
+`Hello World` content hai.
+
+---
+
+## 2. Padding
+
+Content aur border ke beech ka space.
+
+```css
+.box {
+    padding: 20px;
+}
+```
+
+---
+
+## 3. Border
+
+Padding ke around boundary.
+
+```css
+.box {
+    border: 2px solid black;
+}
+```
+
+---
+
+## 4. Margin
+
+Element ke border ke bahar ka space.
+
+```css
+.box {
+    margin: 20px;
+}
+```
+
+### Structure
+
+```text
++-----------------------------+
+|           Margin            |
+|  +-----------------------+  |
+|  |        Border         |  |
+|  |  +-----------------+  |  |
+|  |  |     Padding     |  |  |
+|  |  |  +-----------+  |  |  |
+|  |  |  |  Content  |  |  |  |
+|  |  |  +-----------+  |  |  |
+|  |  +-----------------+  |  |
+|  +-----------------------+  |
++-----------------------------+
+```
+
+### Interview Answer
+
+> **The CSS Box Model describes an HTML element as a box consisting of content, padding, border, and margin.**
+
+---
+
+# 7. What is the Difference Between Margin and Padding?
+
+### Margin
+
+**Margin = Element ke outside ka space**
+
+```css
+.box {
+    margin: 20px;
+}
+```
+
+### Padding
+
+**Padding = Element ke inside ka space**
+
+```css
+.box {
+    padding: 20px;
+}
+```
+
+### Difference
+
+| Margin                                      | Padding                              |
+| ------------------------------------------- | ------------------------------------ |
+| Element ke outside space                    | Element ke inside space              |
+| Border ke bahar hota hai                    | Content aur border ke beech hota hai |
+| Elements ke beech distance create karta hai | Content ko border se door karta hai  |
+
+### Easy Trick
+
+> **Margin = Outside**
+
+> **Padding = Inside**
+
+### Interview Answer
+
+> **Margin is the space outside an element's border, while padding is the space between the content and the border.**
+
+---
+
+# 8. What is `display` Property in CSS?
+
+CSS ki `display` property decide karti hai ki element **layout mein kaise behave karega**.
+
+Important values:
+
+```css
+display: block;
+display: inline;
+display: inline-block;
+display: none;
+display: flex;
+display: grid;
+```
+
+---
+
+## `display: block`
+
+Element new line se start hota hai.
+
+Examples:
+
+```text
+div
+p
+h1
+```
+
+```css
+.box {
+    display: block;
+}
+```
+
+---
+
+## `display: inline`
+
+Element same line mein rehta hai.
+
+Examples:
+
+```text
+span
+a
+```
+
+```css
+span {
+    display: inline;
+}
+```
+
+---
+
+## `display: inline-block`
+
+Same line mein rehta hai, lekin `width` aur `height` set kar sakte hain.
+
+```css
+button {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+}
+```
+
+---
+
+## `display: none`
+
+Element completely hide ho jata hai aur layout mein uski space bhi remove ho jati hai.
+
+```css
+.box {
+    display: none;
+}
+```
+
+---
+
+## `display: flex`
+
+Flexbox layout enable karta hai.
+
+```css
+.container {
+    display: flex;
+}
+```
+
+---
+
+## `display: grid`
+
+Grid layout enable karta hai.
+
+```css
+.container {
+    display: grid;
+}
+```
+
+### Interview Answer
+
+> **The CSS `display` property defines how an element participates in the layout of a webpage.**
+
+---
+
+# 9. Difference Between `display: none` and `visibility: hidden`
+
+## `display: none`
+
+Element:
+
+* Visible nahi hota.
+* Layout se remove ho jata hai.
+* Uski space bhi nahi rehti.
+
+```css
+.box {
+    display: none;
+}
+```
+
+---
+
+## `visibility: hidden`
+
+Element:
+
+* Visible nahi hota.
+* Lekin layout mein uski space retain rehti hai.
+
+```css
+.box {
+    visibility: hidden;
+}
+```
+
+### Example
+
+Suppose:
+
+```text
+[Box 1] [Box 2] [Box 3]
+```
+
+Agar Box 2 par:
+
+```css
+display: none;
+```
+
+to:
+
+```text
+[Box 1] [Box 3]
+```
+
+Agar Box 2 par:
+
+```css
+visibility: hidden;
+```
+
+to:
+
+```text
+[Box 1] [       ] [Box 3]
+```
+
+### Interview Answer
+
+> **`display: none` removes the element from the layout, while `visibility: hidden` hides the element but preserves its layout space.**
+
+---
+
+# 10. What is CSS Positioning?
+
+CSS Positioning ka use HTML elements ko webpage par **position/place** karne ke liye hota hai.
+
+Main values:
+
+```css
+position: static;
+position: relative;
+position: absolute;
+position: fixed;
+position: sticky;
+```
+
+---
+
+## `static`
+
+Default position.
+
+Element normal document flow mein rehta hai.
+
+```css
+.box {
+    position: static;
+}
+```
+
+---
+
+## `relative`
+
+Element apni original position ke relative move hota hai.
+
+```css
+.box {
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+```
+
+Original space retain rehti hai.
+
+---
+
+## `absolute`
+
+Element normal document flow se remove ho jata hai.
+
+Ye nearest positioned ancestor ke according position hota hai.
+
+```css
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+```
+
+---
+
+## `fixed`
+
+Element viewport ke according fixed hota hai.
+
+Scroll karne par bhi fixed position par rehta hai.
+
+```css
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+```
+
+---
+
+## `sticky`
+
+Element normal flow mein rehta hai, lekin scroll karne par specified position par stick ho jata hai.
+
+```css
+.header {
+    position: sticky;
+    top: 0;
+}
+```
+
+### Interview Answer
+
+> **CSS positioning is used to control the placement of elements using properties such as static, relative, absolute, fixed, and sticky.**
+
+---
+
+# 11. Difference Between `relative`, `absolute`, `fixed` and `sticky`
+
+| Position   | Meaning                                                    |
+| ---------- | ---------------------------------------------------------- |
+| `relative` | Apni original position ke relative move hota hai           |
+| `absolute` | Nearest positioned ancestor ke according position hota hai |
+| `fixed`    | Viewport ke according fixed hota hai                       |
+| `sticky`   | Scroll ke time specified position par stick hota hai       |
+
+### `relative`
+
+```css
+.box {
+    position: relative;
+    top: 10px;
+}
+```
+
+Element apni original position se move karega.
+
+### `absolute`
+
+```css
+.child {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+```
+
+Nearest positioned ancestor ke according position hoga.
+
+### `fixed`
+
+```css
+.button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+```
+
+Screen par fixed rahega.
+
+### `sticky`
+
+```css
+.header {
+    position: sticky;
+    top: 0;
+}
+```
+
+Scroll karne par top par stick karega.
+
+### 🧠 Easy Trick
+
+```text
+relative → Apne position ke relative
+absolute → Parent/ancestor ke relative
+fixed    → Screen ke relative
+sticky   → Scroll ke according
+```
+
+---
+
+# 12. What is Flexbox?
+
+**Flexbox = Flexible Box Layout**
+
+Flexbox ek **one-dimensional layout system** hai.
+
+Iska use elements ko:
+
+* Row mein arrange karne
+* Column mein arrange karne
+* Center karne
+* Space distribute karne
+* Responsive layout banane
+
+ke liye hota hai.
+
+Basic:
+
+```css
+.container {
+    display: flex;
+}
+```
+
+Important properties:
+
+```css
+display: flex;
+flex-direction;
+justify-content;
+align-items;
+flex-wrap;
+gap;
+```
+
+### Example
+
+```html
+<div class="container">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+</div>
+```
+
+```css
+.container {
+    display: flex;
+    gap: 20px;
+}
+```
+
+Elements ek row mein aa jayenge.
+
+### `flex-direction`
+
+```css
+flex-direction: row;
+flex-direction: column;
+```
+
+### `justify-content`
+
+Main axis par items ko align karta hai.
+
+```css
+justify-content: center;
+```
+
+### `align-items`
+
+Cross axis par items ko align karta hai.
+
+```css
+align-items: center;
+```
+
+### Interview Answer
+
+> **Flexbox is a one-dimensional CSS layout system used to arrange and align elements in rows or columns.**
+
+---
+
+# 13. Difference Between `justify-content` and `align-items`
+
+Dono Flexbox mein alignment ke liye use hote hain.
+
+### `justify-content`
+
+**Main axis** par items ko align karta hai.
+
+```css
+.container {
+    display: flex;
+    justify-content: center;
+}
+```
+
+Default `flex-direction: row` mein ye **horizontal alignment** karega.
+
+---
+
+### `align-items`
+
+**Cross axis** par items ko align karta hai.
+
+```css
+.container {
+    display: flex;
+    align-items: center;
+}
+```
+
+Default `flex-direction: row` mein ye **vertical alignment** karega.
+
+### Important
+
+Axes `flex-direction` par depend karte hain.
+
+```text
+flex-direction: row
+
+justify-content → Main axis → Horizontal
+align-items     → Cross axis → Vertical
+```
+
+```text
+flex-direction: column
+
+justify-content → Main axis → Vertical
+align-items     → Cross axis → Horizontal
+```
+
+### 🧠 Easy Trick
+
+> **justify-content → Main Axis**
+
+> **align-items → Cross Axis**
+
+### Interview Answer
+
+> **`justify-content` aligns flex items along the main axis, while `align-items` aligns them along the cross axis.**
+
+---
+
+# 14. What is CSS Grid?
+
+CSS Grid ek **two-dimensional layout system** hai.
+
+Ye simultaneously:
+
+* Rows
+* Columns
+
+dono ko manage kar sakta hai.
+
+Example:
+
+```css
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+```
+
+Isse 3 columns ka grid banega.
+
+Example:
+
+```text
++--------+--------+--------+
+|   1    |   2    |   3    |
++--------+--------+--------+
+|   4    |   5    |   6    |
++--------+--------+--------+
+```
+
+### Common Properties
+
+```css
+display: grid;
+
+grid-template-columns;
+grid-template-rows;
+
+gap;
+
+grid-column;
+grid-row;
+```
+
+### Interview Answer
+
+> **CSS Grid is a two-dimensional layout system used to create layouts using rows and columns.**
+
+---
+
+# 15. Flexbox vs Grid
+
+| Flexbox                                | Grid                                      |
+| -------------------------------------- | ----------------------------------------- |
+| One-dimensional                        | Two-dimensional                           |
+| Row OR column                          | Rows AND columns                          |
+| One axis par focus                     | Two axes par focus                        |
+| Component-level layouts ke liye useful | Page-level/complex layouts ke liye useful |
+| Content alignment ke liye excellent    | Structured layouts ke liye excellent      |
+
+### Flexbox Example
+
+```css
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+```
+
+### Grid Example
+
+```css
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+```
+
+### 🧠 Easy Trick
+
+> **Flexbox = 1D**
+
+> **Grid = 2D**
+
+### Interview Answer
+
+> **Flexbox is mainly used for one-dimensional layouts, while CSS Grid is designed for two-dimensional layouts involving rows and columns.**
+
+---
+
+# 16. What is CSS Specificity?
+
+CSS Specificity decide karti hai ki jab **multiple CSS rules same element ko target karein**, to kaunsi rule ki priority zyada hogi.
+
+Generally priority:
+
+```text
+Inline
+   ↓
+ID
+   ↓
+Class / Attribute / Pseudo-class
+   ↓
+Element / Pseudo-element
+```
+
+Example:
+
+```html
+<p id="title" class="text">
+    Hello
+</p>
+```
+
+```css
+p {
+    color: green;
+}
+
+.text {
+    color: blue;
+}
+
+#title {
+    color: red;
+}
+```
+
+Final color:
+
+```text
+Red
+```
+
+Kyunki `#title` ki specificity class aur element selector se higher hai.
+
+### Specificity Order
+
+```text
+Inline      → Highest
+ID          → High
+Class       → Medium
+Element     → Low
+Universal   → Lowest
+```
+
+### Important
+
+`!important` normal specificity rules ko override kar sakta hai, lekin ise unnecessarily use nahi karna chahiye.
+
+```css
+p {
+    color: red !important;
+}
+```
+
+### Interview Answer
+
+> **CSS specificity is the mechanism used by the browser to determine which CSS rule should be applied when multiple rules target the same element.**
+
+---
+
+# 17. What are Pseudo-classes and Pseudo-elements?
+
+## Pseudo-class
+
+Pseudo-class element ki **state ya condition** ko select karta hai.
+
+Syntax:
+
+```css
+selector:pseudo-class
+```
+
+Example:
+
+```css
+button:hover {
+    background: blue;
+}
+```
+
+Jab mouse button ke upar hover karega, style apply hoga.
+
+Common pseudo-classes:
+
+```css
+:hover
+:focus
+:active
+:first-child
+:last-child
+:nth-child()
+:checked
+```
+
+---
+
+## Pseudo-element
+
+Pseudo-element element ke **specific part** ko style karta hai.
+
+Syntax:
+
+```css
+selector::pseudo-element
+```
+
+Example:
+
+```css
+p::first-letter {
+    font-size: 30px;
+}
+```
+
+Ye paragraph ke first letter ko style karega.
+
+Common pseudo-elements:
+
+```css
+::before
+::after
+::first-letter
+::first-line
+::selection
+```
+
+### Difference
+
+| Pseudo-class               | Pseudo-element           |
+| -------------------------- | ------------------------ |
+| Element ki state/condition | Element ke specific part |
+| `:` use karta hai          | `::` use karta hai       |
+| `:hover`                   | `::before`               |
+| `:focus`                   | `::after`                |
+
+### 🧠 Easy Trick
+
+> **Pseudo-class = State**
+
+> **Pseudo-element = Part**
+
+### Interview Answer
+
+> **A pseudo-class targets an element based on its state or condition, while a pseudo-element targets a specific part of an element.**
+
+---
+
+# 18. What is Responsive Web Design?
+
+Responsive Web Design ka matlab hai website ko **different screen sizes** par properly display karna.
+
+For example:
+
+* Mobile
+* Tablet
+* Laptop
+* Desktop
+
+Website ka layout screen size ke according adjust hota hai.
+
+### Media Query Example
+
+```css
+@media (max-width: 768px) {
+
+    .container {
+        width: 100%;
+    }
+
+}
+```
+
+Agar screen width `768px` ya usse kam hai, to ye CSS apply hogi.
+
+### Responsive Design mein Common Techniques
+
+* Media queries
+* Flexible layouts
+* Flexbox
+* CSS Grid
+* Relative units
+* Responsive images
+
+Example:
+
+```css
+img {
+    max-width: 100%;
+    height: auto;
+}
+```
+
+### Interview Answer
+
+> **Responsive Web Design is an approach where a website adapts its layout and content to different screen sizes and devices.**
+
+---
+
+# 19. What are `px`, `%`, `em`, `rem`, `vh` and `vw`?
+
+CSS mein different units ka use size define karne ke liye hota hai.
+
+---
+
+## `px`
+
+Pixel unit.
+
+Generally fixed-length unit hai.
+
+```css
+.box {
+    width: 200px;
+}
+```
+
+---
+
+## `%`
+
+Percentage generally containing/contextual size ke relative hota hai.
+
+```css
+.box {
+    width: 50%;
+}
+```
+
+Agar parent ki width `1000px` hai, to box ki width approximately `500px` hogi.
+
+---
+
+## `em`
+
+`em` font size ke context ke relative hota hai.
+
+```css
+.child {
+    font-size: 2em;
+}
+```
+
+Iska actual size context par depend karta hai.
+
+---
+
+## `rem`
+
+`rem` **root (`html`) element ke font size** ke relative hota hai.
+
+```css
+html {
+    font-size: 16px;
+}
+
+.box {
+    font-size: 2rem;
+}
+```
+
+`2rem = 32px` in this example.
+
+---
+
+## `vh`
+
+`vh = viewport height`
+
+```css
+.box {
+    height: 100vh;
+}
+```
+
+`100vh` viewport ki approximately complete height ke equal hota hai.
+
+---
+
+## `vw`
+
+`vw = viewport width`
+
+```css
+.box {
+    width: 100vw;
+}
+```
+
+`100vw` viewport ki width ke equal hota hai.
+
+### Quick Revision
+
+| Unit  | Meaning                       |
+| ----- | ----------------------------- |
+| `px`  | Pixel                         |
+| `%`   | Relative percentage           |
+| `em`  | Font-size context ke relative |
+| `rem` | Root font-size ke relative    |
+| `vh`  | Viewport height               |
+| `vw`  | Viewport width                |
+
+### Interview Answer
+
+> **CSS units such as px, %, em, rem, vh, and vw are used to define sizes. Some are fixed or context-relative, while viewport units are based on the browser viewport.**
+
+---
+
+# 20. What is `z-index`?
+
+`z-index` overlapping elements ka **stacking order** control karta hai.
+
+Higher `z-index` wala element generally lower `z-index` wale element ke upar appear hota hai, subject to CSS stacking-context rules.
+
+Example:
+
+```css
+.box1 {
+    position: absolute;
+    z-index: 2;
+}
+
+.box2 {
+    position: absolute;
+    z-index: 1;
+}
+```
+
+Yahan `.box1` generally `.box2` ke upar appear karega.
+
+### Important
+
+`z-index` ka effect stacking context aur positioning/layout context par depend karta hai. Isliye sirf `z-index: 9999` dene se har situation mein element sabke upar nahi aa jata.
+
+### Example
+
+```html
+<div class="box1">Box 1</div>
+<div class="box2">Box 2</div>
+```
+
+```css
+.box1 {
+    position: absolute;
+    z-index: 2;
+}
+
+.box2 {
+    position: absolute;
+    z-index: 1;
+}
+```
+
+### Common Use Cases
+
+* Dropdown menus
+* Modals
+* Navigation bars
+* Tooltips
+* Overlays
+* Floating elements
+
+### Interview Answer
+
+> **`z-index` controls the stacking order of overlapping elements. An element with a higher stacking level generally appears above an element with a lower stacking level within the relevant stacking context.**
+
+---
+
+# ⭐ CSS Quick Revision
+
+```text
+CSS
+ ↓
+Styling and Layout
+
+Selectors
+ ↓
+HTML elements ko target karte hain
+
+Box Model
+ ↓
+Content → Padding → Border → Margin
+
+Display
+ ↓
+block / inline / inline-block / none / flex / grid
+
+Position
+ ↓
+static / relative / absolute / fixed / sticky
+
+Flexbox
+ ↓
+1D Layout
+
+Grid
+ ↓
+2D Layout
+
+justify-content
+ ↓
+Main Axis
+
+align-items
+ ↓
+Cross Axis
+
+Specificity
+ ↓
+Inline > ID > Class > Element
+
+Pseudo-class
+ ↓
+State
+
+Pseudo-element
+ ↓
+Part
+
+Responsive Design
+ ↓
+Mobile + Tablet + Desktop
+
+z-index
+ ↓
+Stacking Order
+```
+
+# ⭐ Most Important CSS Interview Questions
+
+Agar interview se pehle time kam ho, to in topics ko **priority** do:
+
+1. CSS Box Model
+2. Margin vs Padding
+3. `display`
+4. `position`
+5. Flexbox
+6. `justify-content` vs `align-items`
+7. Flexbox vs Grid
+8. CSS Selectors
+9. `id` vs `class`
+10. CSS Specificity
+11. Responsive Design
+12. `display: none` vs `visibility: hidden`
+13. `z-index`
+14. Pseudo-classes vs Pseudo-elements
+15. CSS Units
+
+
+
+
+
+
+
+
+
+JavaScript — Detailed Notes
+1. What is JavaScript?
+
+JavaScript (JS) ek programming language hai jo web pages ko interactive aur dynamic banane ke liye use hoti hai.
+
+HTML → Structure
+CSS → Styling
+JavaScript → Behavior / Functionality
+
+Example:
+
+<button onclick="showMessage()">Click Me</button>
+
+<script>
+function showMessage() {
+    alert("Hello World");
+}
+</script>
+
+Button click karne par JavaScript execute hogi.
+
+JavaScript ka use
+Web development
+Form validation
+DOM manipulation
+API calls
+Animations
+Interactive websites
+Backend development using Node.js
+Real-time applications
+2. JavaScript kaha run hoti hai?
+
+JavaScript traditionally browser ke JavaScript engine mein run hoti hai.
+
+Examples:
+
+Chrome → V8
+Firefox → SpiderMonkey
+Safari → JavaScriptCore
+
+JavaScript browser ke bahar bhi run kar sakti hai, jaise Node.js ke through.
+
+3. How to Add JavaScript in HTML?
+Inline JavaScript
+<button onclick="alert('Hello')">
+    Click
+</button>
+Internal JavaScript
+<script>
+    alert("Hello World");
+</script>
+External JavaScript
+
+script.js:
+
+function hello() {
+    alert("Hello World");
+}
+
+HTML:
+
+<script src="script.js"></script>
+
+External JavaScript large projects mein recommended hoti hai.
+
+4. Variables
+
+Variables data store karne ke liye use hote hain.
+
+JavaScript mein commonly:
+
+var name = "Rahul";
+let age = 21;
+const country = "India";
+
+Modern JavaScript mein generally let aur const prefer kiye jaate hain.
+
+5. var, let, const
+var	let	const
+Function-scoped	Block-scoped	Block-scoped
+Redeclare possible	Same scope mein redeclare nahi	Same scope mein redeclare nahi
+Reassign possible	Reassign possible	Reassign nahi
+Older style	Modern	Modern
+
+Example:
+
+let age = 20;
+age = 21;
+
+const pi = 3.14;
+// pi = 4;  // Error
+6. Data Types
+
+JavaScript mein different data types hote hain.
+
+Primitive Data Types
+String
+let name = "Rahul";
+Number
+let age = 21;
+let price = 99.99;
+Boolean
+let isStudent = true;
+Undefined
+let x;
+console.log(x);
+
+Output:
+
+undefined
+Null
+let value = null;
+BigInt
+let bigNumber = 12345678901234567890n;
+Symbol
+
+Unique identifiers ke liye use hota hai.
+
+let id = Symbol("id");
+7. Non-Primitive Data Types
+
+Mainly:
+
+Object
+Array
+Function
+
+Example:
+
+let student = {
+    name: "Rahul",
+    age: 21
+};
+8. String
+
+String text represent karti hai.
+
+let name = "Rahul";
+
+Different ways:
+
+let a = "Hello";
+let b = 'Hello';
+let c = `Hello`;
+
+Backticks ko template literals ke liye use kar sakte hain.
+
+let name = "Rahul";
+let age = 21;
+
+console.log(`My name is ${name} and I am ${age} years old.`);
+9. Operators
+Arithmetic Operators
++
+-
+*
+/
+%
+**
+
+Example:
+
+let a = 10;
+let b = 3;
+
+console.log(a + b);
+console.log(a % b);
+Comparison Operators
+==
+===
+!=
+!==
+>
+<
+>=
+<=
+
+Example:
+
+console.log(10 == "10");   // true
+console.log(10 === "10");  // false
+10. == vs ===
+
+Ye very important interview question hai.
+
+==
+
+Value compare karta hai aur type coercion kar sakta hai.
+
+10 == "10"
+
+Result:
+
+true
+===
+
+Value + data type dono compare karta hai.
+
+10 === "10"
+
+Result:
+
+false
+Interview answer
+
+== performs loose equality comparison, while === performs strict equality comparison without type coercion.
+
+Generally === prefer karna better hota hai when strict comparison chahiye.
+
+11. Logical Operators
+&&   // AND
+||   // OR
+!    // NOT
+
+Example:
+
+let age = 21;
+let hasID = true;
+
+if (age >= 18 && hasID) {
+    console.log("Allowed");
+}
+12. Conditional Statements
+if
+let age = 20;
+
+if (age >= 18) {
+    console.log("Adult");
+}
+if-else
+if (age >= 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}
+else-if
+if (marks >= 90) {
+    console.log("A");
+} else if (marks >= 60) {
+    console.log("B");
+} else {
+    console.log("C");
+}
+13. Ternary Operator
+
+Short if-else ke liye.
+
+let age = 20;
+
+let result = age >= 18 ? "Adult" : "Minor";
+
+console.log(result);
+
+Syntax:
+
+condition ? trueValue : falseValue
+14. Switch
+
+Multiple fixed cases ke liye useful.
+
+let day = 2;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+
+    case 2:
+        console.log("Tuesday");
+        break;
+
+    default:
+        console.log("Invalid");
+}
+15. Loops
+for loop
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+while loop
+let i = 1;
+
+while (i <= 5) {
+    console.log(i);
+    i++;
+}
+do-while
+let i = 1;
+
+do {
+    console.log(i);
+    i++;
+} while (i <= 5);
+16. Functions
+
+Function reusable block of code hota hai.
+
+function greet() {
+    console.log("Hello");
+}
+
+greet();
+17. Function with Parameters
+function add(a, b) {
+    return a + b;
+}
+
+let result = add(10, 20);
+
+console.log(result);
+
+Output:
+
+30
+18. Function Expression
+
+Function ko variable mein store kar sakte hain.
+
+const add = function(a, b) {
+    return a + b;
+};
+
+console.log(add(10, 20));
+19. Arrow Function
+
+ES6 mein arrow functions introduce hue.
+
+const add = (a, b) => {
+    return a + b;
+};
+
+Short version:
+
+const add = (a, b) => a + b;
+
+Another example:
+
+const square = x => x * x;
+20. Arrays
+
+Array multiple values store karne ke liye use hota hai.
+
+let fruits = ["Apple", "Mango", "Banana"];
+
+Access:
+
+console.log(fruits[0]);
+
+Output:
+
+Apple
+21. Important Array Methods
+push()
+
+End mein element add karta hai.
+
+fruits.push("Orange");
+pop()
+
+Last element remove karta hai.
+
+fruits.pop();
+shift()
+
+First element remove karta hai.
+
+fruits.shift();
+unshift()
+
+Start mein element add karta hai.
+
+fruits.unshift("Grapes");
+22. map()
+
+Har element par operation apply karke new array return karta hai.
+
+let numbers = [1, 2, 3, 4];
+
+let result = numbers.map(x => x * 2);
+
+console.log(result);
+
+Output:
+
+[2, 4, 6, 8]
+
+map → transform
+
+23. filter()
+
+Condition satisfy karne wale elements ka new array return karta hai.
+
+let numbers = [1, 2, 3, 4, 5];
+
+let result = numbers.filter(x => x % 2 === 0);
+
+console.log(result);
+
+Output:
+
+[2, 4]
+
+filter → select
+
+24. reduce()
+
+Array ke elements ko combine karke generally single result produce karta hai.
+
+let numbers = [1, 2, 3, 4];
+
+let sum = numbers.reduce((total, current) => {
+    return total + current;
+}, 0);
+
+console.log(sum);
+
+Output:
+
+10
+
+reduce → combine
+
+25. Objects
+
+Object key-value pairs store karta hai.
+
+let student = {
+    name: "Rahul",
+    age: 21,
+    course: "JavaScript"
+};
+
+Access:
+
+console.log(student.name);
+console.log(student["age"]);
+26. Adding and Updating Object Properties
+let student = {
+    name: "Rahul",
+    age: 21
+};
+
+student.city = "Delhi";
+
+student.age = 22;
+27. Destructuring
+
+Object se values easily extract kar sakte hain.
+
+const student = {
+    name: "Rahul",
+    age: 21
+};
+
+const { name, age } = student;
+
+console.log(name);
+console.log(age);
+
+Array destructuring:
+
+const numbers = [10, 20];
+
+const [a, b] = numbers;
+28. Spread Operator
+
+Spread operator ... values ko expand karta hai.
+
+const a = [1, 2, 3];
+const b = [...a, 4, 5];
+
+console.log(b);
+
+Output:
+
+[1, 2, 3, 4, 5]
+
+Object example:
+
+const user = {
+    name: "Rahul",
+    age: 21
+};
+
+const updatedUser = {
+    ...user,
+    city: "Delhi"
+};
+29. Rest Parameter
+
+Rest parameter multiple arguments ko collect karta hai.
+
+function sum(...numbers) {
+    return numbers.reduce((a, b) => a + b, 0);
+}
+
+console.log(sum(1, 2, 3, 4));
+30. DOM
+
+DOM = Document Object Model
+
+Browser HTML document ko ek tree-like object structure mein represent karta hai.
+
+HTML:
+
+<h1 id="title">Hello</h1>
+
+JavaScript:
+
+const title = document.getElementById("title");
+
+title.innerText = "Welcome";
+
+JavaScript HTML content ko dynamically change kar sakti hai.
+
+31. Selecting HTML Elements
+getElementById()
+document.getElementById("title");
+querySelector()
+document.querySelector(".student");
+querySelectorAll()
+document.querySelectorAll(".student");
+getElementsByClassName()
+document.getElementsByClassName("student");
+32. Changing HTML Content
+document.getElementById("title").innerText = "Hello";
+
+innerHTML HTML content set/read kar sakta hai:
+
+element.innerHTML = "<b>Hello</b>";
+
+User-controlled untrusted content ke saath innerHTML carefully use karna chahiye.
+
+33. Changing CSS using JavaScript
+const title = document.getElementById("title");
+
+title.style.color = "red";
+title.style.fontSize = "30px";
+
+Better approach often CSS class toggle karna hota hai:
+
+title.classList.add("active");
+34. Events
+
+Event matlab browser mein koi action hona.
+
+Examples:
+
+click
+submit
+mouseover
+keydown
+change
+input
+load
+35. Event Listener
+
+Recommended way:
+
+const button = document.getElementById("btn");
+
+button.addEventListener("click", function() {
+    alert("Button clicked");
+});
+36. Form Handling
+const form = document.getElementById("form");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    console.log("Form submitted");
+});
+
+preventDefault() browser ke default form submission behavior ko prevent karta hai.
+
+37. Event Bubbling
+
+Event bubbling mein event child element se parent elements ki taraf propagate karta hai.
+
+Example:
+
+button
+  ↓
+div
+  ↓
+body
+
+Agar button click hua, event parent elements tak bubble kar sakta hai.
+
+38. Event Capturing
+
+Capturing bubbling ka reverse phase hai.
+
+body
+ ↓
+div
+ ↓
+button
+
+Event parent se child ki direction mein travel karta hai.
+
+39. this Keyword
+
+this generally current execution context/object ko refer karta hai, lekin iska exact behavior context par depend karta hai.
+
+Example:
+
+const student = {
+    name: "Rahul",
+
+    greet: function() {
+        console.log(this.name);
+    }
+};
+
+student.greet();
+
+Output:
+
+Rahul
+40. Arrow Function and this
+
+Arrow functions ka apna this nahi hota. Ye surrounding lexical context se this leti hain.
+
+Example:
+
+const student = {
+    name: "Rahul",
+
+    greet: function() {
+        const show = () => {
+            console.log(this.name);
+        };
+
+        show();
+    }
+};
+
+student.greet();
+41. Scope
+
+Scope decide karta hai ki variable kahan accessible hai.
+
+Main types:
+
+Global scope
+Function scope
+Block scope
+
+Example:
+
+let globalVar = "Global";
+
+function test() {
+    let localVar = "Local";
+}
+
+localVar function ke bahar directly accessible nahi hai.
+
+42. Hoisting
+
+JavaScript execution se pehle declarations ko process karti hai. Is behavior ko commonly hoisting kaha jata hai.
+
+Example:
+
+console.log(x);
+
+var x = 10;
+
+var declaration hoist hoti hai, isliye result undefined hota hai.
+
+let aur const declarations bhi scope ke beginning se associated hoti hain, but initialization se pehle access karne par Temporal Dead Zone (TDZ) ke karan error milta hai.
+
+43. Closure
+
+Closure tab hota hai jab inner function apne outer function ke variables ko remember/access kar sakta hai, even after outer function finish ho gaya ho.
+
+Example:
+
+function outer() {
+    let count = 0;
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = outer();
+
+console.log(counter());
+console.log(counter());
+
+Output:
+
+1
+2
+
+Closure ka use:
+
+Data privacy
+Counters
+Callbacks
+Function factories
+44. Callback Function
+
+Jo function kisi doosre function ko argument ke form mein pass hota hai, use callback function kehte hain.
+
+function greet(name, callback) {
+    console.log("Hello " + name);
+    callback();
+}
+
+function done() {
+    console.log("Done");
+}
+
+greet("Rahul", done);
+45. Synchronous vs Asynchronous JavaScript
+Synchronous
+
+Code generally one statement at a time execute hota hai.
+
+Task 1
+  ↓
+Task 2
+  ↓
+Task 3
+Asynchronous
+
+Long-running operations ko wait karte hue baaki work continue ho sakta hai.
+
+Examples:
+
+API calls
+Timers
+File operations
+46. setTimeout()
+
+Code ko specified delay ke baad execute karta hai.
+
+setTimeout(() => {
+    console.log("Hello");
+}, 2000);
+
+Approximately 2 seconds baad callback execute hone ke liye schedule hota hai.
+
+47. Promise
+
+Promise asynchronous operation ka eventual result represent karta hai.
+
+Promise ki states:
+
+Pending
+   ↓
+Fulfilled
+   OR
+Rejected
+
+Example:
+
+const promise = new Promise((resolve, reject) => {
+
+    let success = true;
+
+    if (success) {
+        resolve("Success");
+    } else {
+        reject("Failed");
+    }
+
+});
+48. .then() and .catch()
+promise
+    .then(result => {
+        console.log(result);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+then() → success handle
+catch() → error handle
+
+49. Async/Await
+
+Promises ko readable way mein handle karne ke liye async/await use hota hai.
+
+async function getData() {
+    try {
+        const response = await fetch("/api/users");
+        const data = await response.json();
+
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+await promise settle hone tak us async function ke execution ko pause karta hai.
+
+50. Fetch API
+
+Server/API se data request karne ke liye fetch() use kar sakte hain.
+
+GET
+fetch("/api/users")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });
+POST
+fetch("/api/users", {
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+        name: "Rahul",
+        age: 21
+    })
+});
+51. JSON
+
+JSON = JavaScript Object Notation
+
+API communication mein commonly use hota hai.
+
+{
+    "name": "Rahul",
+    "age": 21
+}
+
+JavaScript object:
+
+const user = {
+    name: "Rahul",
+    age: 21
+};
+JSON.stringify()
+
+Object → JSON string
+
+const json = JSON.stringify(user);
+JSON.parse()
+
+JSON string → JavaScript object
+
+const obj = JSON.parse(json);
+52. Error Handling
+
+JavaScript mein try...catch use kar sakte hain.
+
+try {
+    let result = riskyOperation();
+} catch (error) {
+    console.log("Error:", error);
+}
+
+Finally:
+
+try {
+    console.log("Try");
+} catch (error) {
+    console.log("Error");
+} finally {
+    console.log("Always runs");
+}
+53. Local Storage
+
+Browser mein data store karne ke liye localStorage use hota hai.
+
+localStorage.setItem("name", "Rahul");
+
+Get:
+
+let name = localStorage.getItem("name");
+
+Remove:
+
+localStorage.removeItem("name");
+
+Clear:
+
+localStorage.clear();
+
+Important: localStorage values strings ke form mein store karta hai.
+
+Object store karna ho:
+
+localStorage.setItem(
+    "user",
+    JSON.stringify(user)
+);
+54. Session Storage
+
+sessionStorage bhi key-value data store karta hai, but data generally current browser tab/session ke lifetime se associated hota hai.
+
+sessionStorage.setItem("name", "Rahul");
+55. LocalStorage vs SessionStorage
+LocalStorage	SessionStorage
+Data longer persist kar sakta hai	Tab/session ke lifetime se associated
+Browser storage	Browser storage
+localStorage	sessionStorage
+Manually clear/remove karna padta hai	Tab close hone par normally clear ho jata hai
+56. ES6 Features
+
+ES6 / ECMAScript 2015 ne JavaScript mein many important features introduce kiye.
+
+Important:
+
+let
+const
+Arrow functions
+Template literals
+Destructuring
+Spread operator
+Rest parameters
+Classes
+Modules
+Promises
+Default parameters
+57. Classes
+
+JavaScript mein classes objects create karne ke liye blueprint provide karti hain.
+
+class Student {
+
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log("Hello " + this.name);
+    }
+}
+
+const student = new Student("Rahul", 21);
+
+student.greet();
+58. Inheritance
+
+Ek class doosri class ki properties/methods inherit kar sakti hai.
+
+class Person {
+    greet() {
+        console.log("Hello");
+    }
+}
+
+class Student extends Person {
+    study() {
+        console.log("Studying");
+    }
+}
+
+const s = new Student();
+
+s.greet();
+s.study();
+59. Modules
+
+Large applications mein JavaScript ko multiple files mein divide kar sakte hain.
+
+Export
+export function add(a, b) {
+    return a + b;
+}
+Import
+import { add } from "./math.js";
+
+console.log(add(10, 20));
+
+HTML:
+
+<script type="module" src="app.js"></script>
+60. Shallow Copy vs Deep Copy
+Shallow Copy
+
+Nested objects/arrays ke references shared ho sakte hain.
+
+const a = {
+    name: "Rahul",
+    address: {
+        city: "Delhi"
+    }
+};
+
+const b = { ...a };
+
+b.address.city = "Mumbai";
+
+console.log(a.address.city);
+
+Nested object shared hone ki wajah se original bhi affect ho sakta hai.
+
+Deep Copy
+
+Nested data ki independent copy create karne ka goal hota hai.
+
+Simple data ke liye:
+
+const b = structuredClone(a);
+⭐ Most Important JavaScript Interview Questions
+
+Fresher interview ke liye ye topics must prepare karo:
+
+What is JavaScript?
+var vs let vs const
+Data types
+== vs ===
+null vs undefined
+Function vs Arrow Function
+Array methods — map, filter, reduce
+Object and Array
+Destructuring
+Spread vs Rest
+DOM
+Events
+Event bubbling/capturing
+Scope
+Hoisting
+Closure
+Callback
+Promise
+Async/Await
+Fetch API
+JSON
+LocalStorage vs SessionStorage
+this
+Classes and inheritance
+Synchronous vs Asynchronous JavaScript
+🧠 Complete Revision Flow
+JavaScript
+    ↓
+Variables & Data Types
+    ↓
+Operators
+    ↓
+Conditions & Loops
+    ↓
+Functions
+    ↓
+Arrays & Objects
+    ↓
+ES6 Features
+    ↓
+DOM
+    ↓
+Events
+    ↓
+Scope & Closure
+    ↓
+Callbacks
+    ↓
+Promises
+    ↓
+Async/Await
+    ↓
+Fetch API
+    ↓
+JSON
+    ↓
+Storage
+    ↓
+Classes & Modules
