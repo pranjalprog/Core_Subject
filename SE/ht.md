@@ -1392,3 +1392,262 @@ Interview ke liye in questions ko definitely prepare karo:
 **JavaScript = Behavior**
 
 **DOM = HTML ka browser-side tree representation**
+
+
+
+
+
+
+# How to Add CSS and JavaScript in HTML
+
+HTML mein **CSS aur JavaScript add karne ke 3 common ways** hain.
+
+---
+
+# 1. Adding CSS
+
+## A. External CSS — Recommended
+
+Ek separate `style.css` file banao:
+
+```css
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: red;
+}
+```
+
+HTML mein CSS file connect karo:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Hello World</h1>
+</body>
+</html>
+```
+
+👉 `<link>` tag se external CSS connect hoti hai.
+
+---
+
+## B. Internal CSS
+
+Same HTML file ke `<head>` ke andar `<style>` tag use karo:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        h1 {
+            color: blue;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Hello</h1>
+    <p>Welcome</p>
+
+</body>
+</html>
+```
+
+👉 CSS directly HTML file ke andar likhi jaati hai.
+
+---
+
+## C. Inline CSS
+
+Direct HTML element ke andar `style` attribute use karo:
+
+```html
+<h1 style="color: red;">
+    Hello World
+</h1>
+```
+
+👉 Small changes ke liye useful hai, lekin large projects mein generally **external CSS** preferred hoti hai.
+
+---
+
+# 2. Adding JavaScript
+
+## A. External JavaScript — Recommended
+
+Ek separate `script.js` file banao:
+
+```javascript
+function hello() {
+    alert("Hello World");
+}
+```
+
+HTML mein JavaScript file connect karo:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+
+<body>
+
+    <button onclick="hello()">
+        Click Me
+    </button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
+
+👉 `<script src="script.js"></script>` se external JavaScript connect hoti hai.
+
+---
+
+## B. Internal JavaScript
+
+HTML ke andar `<script>` tag use karo:
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+    <button onclick="hello()">
+        Click Me
+    </button>
+
+    <script>
+        function hello() {
+            alert("Hello World");
+        }
+    </script>
+
+</body>
+</html>
+```
+
+👉 JavaScript directly HTML file ke andar likhi jaati hai.
+
+---
+
+## C. Inline JavaScript
+
+Direct HTML element ke andar JavaScript likh sakte hain:
+
+```html
+<button onclick="alert('Hello')">
+    Click Me
+</button>
+```
+
+👉 Simple examples ke liye use ho sakta hai, but large projects mein external JavaScript better hoti hai.
+
+---
+
+# 3. Recommended Project Structure
+
+```text
+my-project/
+│
+├── index.html
+├── style.css
+└── script.js
+```
+
+### `index.html`
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 id="title">
+        Hello World
+    </h1>
+
+    <button onclick="hello()">
+        Click Me
+    </button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
+
+### `style.css`
+
+```css
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: red;
+}
+```
+
+### `script.js`
+
+```javascript
+function hello() {
+    alert("Hello World");
+}
+```
+
+---
+
+# Quick Revision
+
+```text
+HTML → Structure
+CSS  → Styling
+JS   → Functionality
+```
+
+### CSS Connect
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+### JavaScript Connect
+
+```html
+<script src="script.js"></script>
+```
+
+### Interview Tip
+
+**External CSS aur External JavaScript large projects mein preferred hote hain** because code separate, reusable aur maintainable rehta hai.
