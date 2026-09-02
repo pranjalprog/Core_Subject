@@ -5186,3 +5186,119 @@ Sticky Post ek aisa post hota hai jise WordPress post listing mein normally top 
 *Example:* Agar blog mein 10 posts hain aur ek important announcement hai, toh us post ko Sticky bana sakte hain taaki woh top par prominently show ho.
 
 **Simple:** Sticky Post = Important post ko top par rakhna.
+
+
+# WordPress Advanced & Developer Interview Questions
+
+### 1. `wp-config.php` file kya karti hai?
+**Answer:**
+`wp-config.php` WordPress ki main configuration file hai. Isme database connection details, database name, username, password, security keys aur severe configuration settings hoti hain.
+
+**Simple:** `wp-config.php` = WordPress ki main configuration file
+
+---
+
+### 2. `wp-content` folder mein kya hota hai?
+**Answer:**
+`wp-content` folder mein website ka custom content aur extensions store hote hain.  
+Isme main elements store hote hain:
+* **Themes**
+* **Plugins**
+* **Uploaded Media**
+
+---
+
+### 3. Themes aur Plugins files kahan store hoti hain?
+**Answer:**
+* **Themes:** `wp-content/themes/`
+* **Plugins:** `wp-content/plugins/`
+
+---
+
+### 4. Child Theme kya hota hai?
+**Answer:**
+Child Theme ek aisi theme hoti hai jo Parent Theme ki functionality aur design ko inherit karti hai, lekin usme apne custom changes karne ki permission deti hai.
+
+**Simple:** Child Theme = Parent Theme ka customized version
+
+---
+
+### 5. Child Theme kyun use karte ho parent theme ko directly edit karne ki jagah?
+**Answer:**
+Parent theme ko directly edit karne par theme update hone ke baad custom changes overwrite/lost ho sakte hain.
+
+**Child Theme use karne ke fayde:**
+* Custom changes safe rehte hain.
+* Parent Theme ko freely update kar sakte hain.
+* Original theme files modify nahi hoti.
+
+---
+
+### 6. `functions.php` file ka use kya hai?
+**Answer:**
+`functions.php` theme ke liye custom functionality aur PHP code add karne ke liye use hoti hai.
+
+*Examples of use-cases:*
+* Custom functions
+* Actions / Filters
+* CSS / JS enqueue karna
+* Custom menus register karna
+* Custom post types create karna
+
+**Simple:** `functions.php` = Theme ki functionality customize karne ki file
+
+---
+
+### 7. Custom Post Types kya hote hain?
+**Answer:**
+Custom Post Type WordPress mein custom type ka content create karne ke liye use hota hai jo normal Posts/Pages se different hota hai.
+
+*Examples:*
+* Posts
+* Pages
+* Products
+* Projects
+* Books
+* Movies
+
+*Scenario:* Agar portfolio website hai, toh Projects naam ka Custom Post Type bana sakte hain.
+
+---
+
+### 8. Taxonomies kya hoti hain? (Custom Taxonomy vs Default)
+**Answer:**
+Taxonomy ka use content ko group aur organize karne ke liye hota hai.
+
+* **Default Taxonomies:** WordPress mein mainly `Category` aur `Tag`.
+* **Custom Taxonomy:** Developer apni requirement ke according custom taxonomy bana sakta hai.
+
+*Example:*
+* **Custom Post Type:** Books
+* **Custom Taxonomy:** Genre
+* **Terms:** Fiction, Horror, Romance
+
+**Simple:** Taxonomy = Content ko classify/group karna
+
+---
+
+### 9. Shortcodes kya hote hain?
+**Answer:**
+Shortcode ek small code/placeholder hota hai jise content ke andar likhkar specific functionality display kar sakte hain.
+
+*Example:*
+`[contact-form]`
+
+WordPress/plugin is shortcode ko process karke actual content/functionality render karta hai.
+
+---
+
+### 10. Custom shortcode kaise create karte ho?
+**Answer:**
+`functions.php` mein `add_shortcode()` function use karke custom shortcode bana sakte hain.
+
+*Code Example:*
+```php
+function hello_shortcode() {
+    return "Hello Pranjal!";
+}
+add_shortcode('hello', 'hello_shortcode');
