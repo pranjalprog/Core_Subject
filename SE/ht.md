@@ -5302,3 +5302,52 @@ function hello_shortcode() {
     return "Hello Pranjal!";
 }
 add_shortcode('hello', 'hello_shortcode');
+
+
+# WordPress Technical & Developer Interview Questions
+
+### 11. Template Hierarchy kya hoti hai WordPress mein?
+**Answer:**
+Template Hierarchy WordPress ka system hai jo decide karta hai ki kisi particular page/post ko display karne ke liye kaunsi template file use hogi.
+
+* **Example:**
+  * **Single Post:** `single.php`
+  * **Page:** `page.php`
+  * **Fallback:** `index.php`
+
+**Simple:** Template Hierarchy = WordPress ka template choose karne ka rules system
+
+---
+
+### 12. `header.php`, `footer.php`, `index.php` ka role kya hota hai?
+**Answer:**
+* **`header.php`:** Website ka common header section contain karta hai (e.g., `<head>`, Logo, Navigation).
+* **`footer.php`:** Website ka common footer section contain karta hai (e.g., Copyright, Footer links).
+* **`index.php`:** Ye theme ki main fallback template hoti hai. Agar specific template available nahi hota, WordPress `index.php` ko fallback ke roop mein use karta hai.
+
+---
+
+### 13. `single.php` aur `page.php` mein farak?
+
+| Feature | `single.php` | `page.php` |
+| :--- | :--- | :--- |
+| **Purpose** | Individual blog post ke liye | Individual static Page ke liye |
+| **Data Content** | Dynamic Post content display karta hai | Static Page content display karta hai |
+| **Examples** | Blog articles, News | About Us, Contact Us |
+
+**Simple:**
+* `single.php` $\rightarrow$ Post
+* `page.php` $\rightarrow$ Page
+
+---
+
+### 14. `functions.php` mein hooks kaise use karte ho?
+**Answer:**
+Hooks ka use WordPress ke existing workflow mein apna custom code add ya modify karne ke liye hota hai.
+
+*Code Example:*
+```php
+function my_function() {
+    // custom code
+}
+add_action('wp_footer', 'my_function');
