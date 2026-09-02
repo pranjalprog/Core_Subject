@@ -4836,3 +4836,353 @@ sessionStorage
 Class
 → Object creation ka blueprint
 ```
+
+
+# WordPress Interview Questions & Answers
+
+### 1. WordPress kya hai?
+**Answer:**
+WordPress ek open-source CMS (Content Management System) hai jiska use websites, blogs aur online stores banane aur manage karne ke liye hota hai.
+
+---
+
+### 2. WordPress.com aur WordPress.org mein farak?
+
+| Features | WordPress.com | WordPress.org |
+| :--- | :--- | :--- |
+| **Hosting** | Hosted service hai (Hosting WordPress provide karta hai) | Self-hosted software hai (Hosting khud leni padti hai) |
+| **Setup** | Setup easy hai | Thoda technical setup karna padta hai |
+| **Customization** | Customization comparatively limited ho sakti hai | Full customization possible hai |
+| **Usability** | Beginners ke liye easy | Developers ke liye zyada flexible |
+
+**Simple Summary:**
+* **WordPress.com:** Hosting included
+* **WordPress.org:** Software + apni hosting
+
+---
+
+### 3. WordPress kis language mein likha gaya hai?
+**Answer:**
+WordPress mainly **PHP** mein develop kiya gaya hai aur website data ke liye **MySQL/MariaDB** database use karta hai. Frontend mein **HTML**, **CSS** aur **JavaScript** bhi use hote hain.
+
+---
+
+### 4. CMS kya hota hai?
+**Answer:**
+CMS ka full form **Content Management System** hai. Ye ek software hota hai jisse bina zyada coding ke website ka content create, edit aur manage kar sakte hain.  
+*Examples:* WordPress, Joomla, Drupal.
+
+---
+
+### 5. WordPress install karne ke liye kya requirements chahiye?
+**Answer:**
+Basic requirements:
+* Web hosting/server
+* PHP
+* MySQL ya MariaDB database
+* HTTPS support
+* Domain name (live website ke liye)
+
+*Current WordPress recommendation:* PHP 8.3+, MySQL 8.0+ ya MariaDB 10.11+ hai.
+
+---
+
+### 6. WordPress Dashboard mein kya-kya milta hai?
+**Answer:**
+Dashboard WordPress website ka admin control panel hai. Isme commonly yeh components milte hain:
+* Posts
+* Media
+* Pages
+* Comments
+* Appearance
+* Plugins
+* Users
+* Tools
+* Settings
+* Dashboard / Updates
+
+---
+
+### 7. Theme kya hoti hai?
+**Answer:**
+Theme website ka design aur appearance decide karti hai, jaise layout, colors, fonts, header, footer etc.  
+**Simple:** Theme = Website ka look/design
+
+---
+
+### 8. Plugin kya hota hai?
+**Answer:**
+Plugin ek additional software/component hota hai jo WordPress website mein new functionality/features add karta hai.  
+*Examples:* Contact form, SEO, security, backup etc.  
+**Simple:** Plugin = Website mein extra feature add karna
+
+---
+
+### 9. Theme aur Plugin mein farak?
+
+| Theme | Plugin |
+| :--- | :--- |
+| Website ka design change karti hai | Website ki functionality add karta hai |
+| Appearance par focus hota hai | Features/functionality par focus hota hai |
+| Layout, colors, fonts control karti hai | SEO, forms, security etc. add kar sakta hai |
+
+---
+
+### 10. Post kya hota hai?
+**Answer:**
+Post WordPress mein mainly regular/frequently updated content ke liye use hota hai, jaise blog articles aur news.  
+Posts normally date aur category/tag ke saath organize kiye ja sakte hain.
+
+---
+
+### 11. Page kya hota hai?
+**Answer:**
+Page static/important information ke liye use hota hai.  
+*Examples:* About Us, Contact Us, Privacy Policy, Services.
+
+---
+
+### 12. Post aur Page mein farak?
+
+| Post | Page |
+| :--- | :--- |
+| Regular content ke liye | Static content ke liye |
+| Date/time associated hota hai | Usually date-based nahi hota |
+| Categories/Tags use kar sakte hain | Usually categories/tags ki need nahi hoti |
+| Blog/news ke liye useful | About, Contact etc. ke liye useful |
+
+---
+
+### 13. Category aur Tag mein farak?
+* **Category:** Content ko broad groups mein divide karti hai.
+* **Tag:** Content ke specific topics/keywords ko identify karta hai.
+
+*Example:*
+* **Category:** Web Development
+* **Tags:** HTML, CSS, JavaScript
+
+**Simple:** Category = bada group | Tag = specific keyword
+
+---
+
+### 14. Permalink kya hota hai?
+**Answer:**
+Permalink kisi WordPress page ya post ka permanent URL/address hota hai.  
+*Example:* `https://example.com/my-first-post/`
+
+---
+
+### 15. Permalink structure kaise change karte ho?
+**Answer:**
+WordPress Dashboard mein:
+1. Go to **Settings** $\rightarrow$ **Permalinks**
+2. Desired structure select karein
+3. **Save Changes** par click karein
+
+---
+
+### 16. Media Library kya hai?
+**Answer:**
+Media Library WordPress ka section hai jahan website ki images, videos, audio aur documents/files store aur manage hote hain.
+
+---
+
+### 17. Featured Image kya hoti hai?
+**Answer:**
+Featured Image kisi post ya page ki main/representative image hoti hai jo post ko visually represent karti hai.  
+Ye blog listing, homepage ya post ke top par show ho sakti hai.
+
+---
+
+### 18. Widget kya hota hai?
+**Answer:**
+Widget ek small content/functionality block hota hai jise website ke specific areas mein add kar sakte hain.  
+*Examples:*
+* Search
+* Recent Posts
+* Categories
+* Calendar
+* Recent Comments
+
+---
+
+### 19. Widget aur Plugin mein farak?
+
+| Widget | Plugin |
+| :--- | :--- |
+| Website ke specific area mein content/function show karta hai | New functionality add karta hai |
+| Usually sidebar/footer etc. mein use hota hai | Site-wide feature provide kar sakta hai |
+| *Example:* Search widget | *Example:* SEO plugin |
+
+**Simple:** Widget = kahan/show kya karna hai | Plugin = functionality add karna
+
+---
+
+### 20. Sidebar kya hoti hai?
+**Answer:**
+Sidebar website ka ek side area/section hota hai jahan widgets ya additional information display ki ja sakti hai.  
+*Example:* Search, Categories, Recent Posts etc.
+
+---
+
+### 21. Menu kaise create karte ho WordPress mein?
+**Answer:**
+**Classic themes mein:**
+1. Go to **Dashboard** $\rightarrow$ **Appearance** $\rightarrow$ **Menus** $\rightarrow$ **Create New Menu**
+2. Menu name enter karo.
+3. Pages/links add karo.
+4. Menu items ka order set karo.
+5. Menu location select karo.
+6. **Save Menu** par click karo.
+
+*Note:* Block themes mein navigation generally **Appearance** $\rightarrow$ **Editor** $\rightarrow$ **Navigation** se manage ki ja sakti hai.
+
+---
+
+### 22. Theme kaise install karte ho?
+**Answer:**
+1. Go to **Dashboard** $\rightarrow$ **Appearance** $\rightarrow$ **Themes** $\rightarrow$ **Add New**
+2. Theme search karo.
+3. **Install** par click karo.
+4. **Activate** par click karo.
+
+*(Agar ZIP file hai to **Upload Theme** option se ZIP upload kar sakte ho.)*
+
+---
+
+### 23. Plugin kaise install/activate karte ho?
+**Answer:**
+1. Go to **Dashboard** $\rightarrow$ **Plugins** $\rightarrow$ **Add New Plugin**
+2. Plugin search karo.
+3. **Install Now** par click karo.
+4. **Activate** par click karo.
+
+*(ZIP plugin ke liye **Upload Plugin** option use kar sakte ho.)*
+
+---
+
+### 24. WordPress ka latest stable version kaunsa hai?
+**Answer:**
+September 2026 ke according WordPress 7.1 latest stable release hai. WordPress.org ke release archive ke according WordPress 7.1 19 August 2026 ko release hua tha.
+
+**Interview mein:**  
+*"The latest stable version is WordPress 7.1."*
+
+---
+
+### 25. wp-admin kya hota hai?
+**Answer:**
+`wp-admin` WordPress ka administration/dashboard area hai jahan se website ko manage kiya jata hai.  
+*Example:* `https://example.com/wp-admin`
+
+Yahan login karke posts, pages, themes, plugins, users aur settings manage kar sakte hain.
+
+---
+
+### 26. Default WordPress themes ke naam batao (kuch)
+**Answer:**
+Kuch default WordPress themes:
+* Twenty Twenty-Five
+* Twenty Twenty-Four
+* Twenty Twenty-Three
+* Twenty Twenty-Two
+* Twenty Twenty-One
+
+---
+
+### 27. WordPress mein Comments kaise manage karte ho?
+**Answer:**
+Go to **Dashboard** $\rightarrow$ **Comments**  
+Yahan se comments ko:
+* Approve
+* Reply
+* Edit
+* Mark as Spam
+* Delete  
+kar sakte hain.
+
+---
+
+### 28. Draft, Published aur Pending post mein farak?
+
+| Status | Meaning |
+| :--- | :--- |
+| **Draft** | Post save hai but public nahi hai |
+| **Pending Review** | Post review/approval ke liye ready hai |
+| **Published** | Post website par public hai |
+
+**Simple:**
+* Draft = abhi complete/publish nahi
+* Pending = review ke liye
+* Published = public
+
+---
+
+### 29. Revisions kya hote hain WordPress mein?
+**Answer:**
+Revisions WordPress mein post/page ke previous saved versions hote hain.  
+Isse hum previous version ko dekh sakte hain aur zarurat padne par restore bhi kar sakte hain.
+
+---
+
+### 30. Gutenberg Editor kya hai?
+**Answer:**
+Gutenberg WordPress ka block-based content editor hai jisme content ko different blocks ke through create aur edit kiya jata hai.  
+*Examples:* Paragraph block, Heading block, Image block, Button block, Video block.
+
+---
+
+### 31. Classic Editor aur Gutenberg mein farak?
+
+| Classic Editor | Gutenberg |
+| :--- | :--- |
+| Traditional editor | Block-based editor |
+| Simple text editor jaisa interface | Blocks ke through content create hota hai |
+| Less flexible layout | More flexible layout |
+| Older editing experience | Modern WordPress editing experience |
+
+---
+
+### 32. Blocks kya hote hain Gutenberg mein?
+**Answer:**
+Blocks Gutenberg editor ke individual content elements hote hain.  
+*Examples:* Paragraph Block, Heading Block, Image Block, Button Block, Video Block, Gallery Block.
+
+**Simple:** Gutenberg mein har content element ek block ho sakta hai.
+
+---
+
+### 33. WordPress mein user roles kya hote hain?
+**Answer:**
+WordPress ke main user roles:
+1. **Administrator:** Website ka almost full control hota hai.
+2. **Editor:** Posts/pages aur doosre users ke content ko manage/edit/publish kar sakta hai.
+3. **Author:** Apne posts ko create, edit aur publish kar sakta hai.
+4. **Contributor:** Posts create/edit kar sakta hai, lekin normally publish nahi kar sakta.
+5. **Subscriber:** Basic role hota hai; mainly login/profile management ke liye.
+
+---
+
+### 34. Admin aur Editor role mein farak?
+
+| Administrator | Editor |
+| :--- | :--- |
+| Almost full website control | Mainly content management |
+| Themes manage kar sakta hai | Usually themes manage nahi karta |
+| Plugins manage kar sakta hai | Usually plugins manage nahi karta |
+| Users manage kar sakta hai | User management limited/not available |
+| Website settings change kar sakta hai | Main focus posts/pages/content par hota hai |
+
+**Simple:**
+* Admin = Website ka complete control
+* Editor = Content ka control
+
+---
+
+### 35. Sticky Post kya hota hai?
+**Answer:**
+Sticky Post ek aisa post hota hai jise WordPress post listing mein normally top par keep karne ke liye mark kiya jata hai.
+
+*Example:* Agar blog mein 10 posts hain aur ek important announcement hai, toh us post ko Sticky bana sakte hain taaki woh top par prominently show ho.
+
+**Simple:** Sticky Post = Important post ko top par rakhna.
