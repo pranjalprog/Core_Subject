@@ -5304,50 +5304,456 @@ function hello_shortcode() {
 add_shortcode('hello', 'hello_shortcode');
 
 
-# WordPress Technical & Developer Interview Questions
+# 11. Template Hierarchy kya hoti hai WordPress mein?
 
-### 11. Template Hierarchy kya hoti hai WordPress mein?
 **Answer:**
-Template Hierarchy WordPress ka system hai jo decide karta hai ki kisi particular page/post ko display karne ke liye kaunsi template file use hogi.
 
-* **Example:**
-  * **Single Post:** `single.php`
-  * **Page:** `page.php`
-  * **Fallback:** `index.php`
+Template Hierarchy WordPress ka system hai jo decide karta hai ki **kisi particular page/post ko display karne ke liye kaunsi template file use hogi**.
 
-**Simple:** Template Hierarchy = WordPress ka template choose karne ka rules system
+Example:
+
+```text
+Single Post → single.php
+Page → page.php
+Fallback → index.php
+```
+
+**Simple:** Template Hierarchy = **WordPress ka template choose karne ka system**
 
 ---
 
-### 12. `header.php`, `footer.php`, `index.php` ka role kya hota hai?
-**Answer:**
-* **`header.php`:** Website ka common header section contain karta hai (e.g., `<head>`, Logo, Navigation).
-* **`footer.php`:** Website ka common footer section contain karta hai (e.g., Copyright, Footer links).
-* **`index.php`:** Ye theme ki main fallback template hoti hai. Agar specific template available nahi hota, WordPress `index.php` ko fallback ke roop mein use karta hai.
+# 12. `header.php`, `footer.php`, `index.php` ka role kya hota hai?
+
+## `header.php`
+
+Website ka common **header section** contain karta hai.
+
+Example:
+
+* `<head>`
+* Logo
+* Navigation
+
+## `footer.php`
+
+Website ka common **footer section** contain karta hai.
+
+Example:
+
+* Copyright
+* Footer links
+
+## `index.php`
+
+Ye theme ki **main fallback template** hoti hai.
+
+Agar specific template available nahi hota, WordPress `index.php` ko fallback ke roop mein use kar sakta hai.
 
 ---
 
-### 13. `single.php` aur `page.php` mein farak?
+# 13. `single.php` aur `page.php` mein farak?
 
-| Feature | `single.php` | `page.php` |
-| :--- | :--- | :--- |
-| **Purpose** | Individual blog post ke liye | Individual static Page ke liye |
-| **Data Content** | Dynamic Post content display karta hai | Static Page content display karta hai |
-| **Examples** | Blog articles, News | About Us, Contact Us |
+| `single.php`                   | `page.php`                     |
+| ------------------------------ | ------------------------------ |
+| Individual blog post ke liye   | Individual Page ke liye        |
+| Post content display karta hai | Page content display karta hai |
+| Example: Blog article          | Example: About Us              |
 
 **Simple:**
-* `single.php` $\rightarrow$ Post
-* `page.php` $\rightarrow$ Page
+
+`single.php` → **Post**
+
+`page.php` → **Page**
 
 ---
 
-### 14. `functions.php` mein hooks kaise use karte ho?
-**Answer:**
-Hooks ka use WordPress ke existing workflow mein apna custom code add ya modify karne ke liye hota hai.
+# 14. `functions.php` mein hooks kaise use karte ho?
 
-*Code Example:*
+**Answer:**
+
+Hooks ka use WordPress ke existing process mein **apna custom code add ya modify** karne ke liye hota hai.
+
+Example:
+
 ```php
 function my_function() {
     // custom code
 }
+
 add_action('wp_footer', 'my_function');
+```
+
+Yahan `wp_footer` action ke time `my_function()` execute hoga.
+
+---
+
+# 15. Actions aur Filters mein farak?
+
+| Actions                                       | Filters                                  |
+| --------------------------------------------- | ---------------------------------------- |
+| Kisi event par custom code execute karte hain | Existing data/value ko modify karte hain |
+| Usually value return karna necessary nahi     | Modified value return karni hoti hai     |
+| `add_action()`                                | `add_filter()`                           |
+
+**Simple:**
+
+**Action → Kuch kaam karna**
+
+**Filter → Existing data ko modify karna**
+
+---
+
+# 16. `add_action()` aur `add_filter()` ka use?
+
+## `add_action()`
+
+WordPress ke kisi event/action par function execute karne ke liye.
+
+```php
+add_action('wp_footer', 'my_function');
+```
+
+## `add_filter()`
+
+Existing value/content ko modify karne ke liye.
+
+```php
+add_filter('the_title', 'modify_title');
+```
+
+---
+
+# 17. WordPress database mein kaunsi important tables hoti hain?
+
+**Answer:**
+
+Common WordPress database tables:
+
+* `wp_posts`
+* `wp_postmeta`
+* `wp_users`
+* `wp_usermeta`
+* `wp_comments`
+* `wp_commentmeta`
+* `wp_terms`
+* `wp_term_taxonomy`
+* `wp_term_relationships`
+* `wp_options`
+
+> **Note:** `wp_` default table prefix hai; actual website mein ye prefix different bhi ho sakta hai.
+
+---
+
+# 18. `wp_posts` table mein kya store hota hai?
+
+**Answer:**
+
+`wp_posts` table mein WordPress ke different content types ka data store hota hai.
+
+Examples:
+
+* Posts
+* Pages
+* Custom Post Types
+* Revisions
+* Attachments
+
+Isme title, content, author, date, status etc. ki information bhi hoti hai.
+
+---
+
+# 19. WordPress mein caching kyun important hai?
+
+**Answer:**
+
+Caching frequently used website data ka **temporary stored version** rakhti hai, jisse har request par website ko same data dobara generate nahi karna padta.
+
+Benefits:
+
+* Website faster hoti hai.
+* Server load kam hota hai.
+* User experience improve hota hai.
+
+**Simple:** Caching = **Website ko fast banana**
+
+---
+
+# 20. Popular caching plugins kaunse hain?
+
+**Answer:**
+
+Commonly used caching plugins:
+
+* WP Rocket
+* W3 Total Cache
+* LiteSpeed Cache
+
+---
+
+# 21. SEO plugins kaunse commonly use hote hain?
+
+**Answer:**
+
+Popular SEO plugins:
+
+* Yoast SEO
+* Rank Math
+* All in One SEO
+
+Ye plugins SEO-related settings, metadata, sitemaps aur optimization mein help karte hain.
+
+---
+
+# 22. WordPress site ko slow loading se kaise optimize karte ho?
+
+**Answer:**
+
+Website speed improve karne ke liye:
+
+* Images optimize karo.
+* Caching use karo.
+* Unnecessary plugins remove karo.
+* CSS/JS optimize/minify karo.
+* Lightweight theme use karo.
+* Good hosting use karo.
+* CDN use karo.
+* Database ko optimize karo.
+* Lazy loading use karo.
+
+**Simple:** Heavy files aur unnecessary requests ko **reduce** karna main goal hai.
+
+---
+
+# 23. Image optimization WordPress mein kaise karte ho?
+
+**Answer:**
+
+* Images ko upload se pehle resize/compress karo.
+* WebP/AVIF jaise modern formats use karo.
+* Lazy loading use karo.
+* Unnecessary large images avoid karo.
+* Image optimization plugins use kar sakte ho.
+
+**Examples:**
+
+* Smush
+* ShortPixel
+* Imagify
+
+---
+
+# 24. WordPress security best practices kya hain?
+
+**Answer:**
+
+* WordPress ko updated rakho.
+* Themes/plugins updated rakho.
+* Unused plugins/themes remove karo.
+* Strong passwords use karo.
+* Trusted themes/plugins use karo.
+* Regular backups lo.
+* HTTPS use karo.
+* Login protection/2FA use karo.
+* Security plugin/firewall use kar sakte ho.
+* Admin access limited rakho.
+
+---
+
+# 25. WordPress backups kaise lete ho?
+
+**Answer:**
+
+Backup mein mainly **database + website files** save karte hain.
+
+### Methods:
+
+1. Backup plugin use karna.
+2. Hosting ka backup system use karna.
+3. Manually files aur database backup lena.
+
+**Popular plugins:**
+
+* UpdraftPlus
+* Duplicator
+
+**Simple:** Backup = **Website ka copy safe location par rakhna**
+
+---
+
+# 26. WordPress site migrate karne ka process kya hota hai?
+
+**Answer:**
+
+Migration ka basic process:
+
+1. Old website ka complete backup lo.
+2. Files copy karo.
+3. Database export karo.
+4. New server/hosting par files upload karo.
+5. Database import karo.
+6. `wp-config.php` mein new database details update karo.
+7. URLs/domain ko update karo agar domain change hua hai.
+8. Permalinks ko refresh/save karo.
+9. Website thoroughly test karo.
+10. DNS/domain ko new server par point karo.
+
+---
+
+# 27. Multisite kya hota hai WordPress mein?
+
+**Answer:**
+
+WordPress Multisite ek feature hai jisse **ek single WordPress installation se multiple websites** create aur manage kar sakte hain.
+
+Example:
+
+```text
+Main WordPress
+   ├── Site 1
+   ├── Site 2
+   └── Site 3
+```
+
+---
+
+# 28. WooCommerce kya hai?
+
+**Answer:**
+
+WooCommerce WordPress ka **e-commerce plugin/platform** hai jiska use online store banane ke liye hota hai.
+
+Isse:
+
+* Products
+* Cart
+* Checkout
+* Orders
+* Payments
+* Shipping
+
+jaise features manage kar sakte hain.
+
+---
+
+# 29. WooCommerce aur WordPress mein relation kya hai?
+
+**Answer:**
+
+**WordPress ek CMS hai**, jabki **WooCommerce ek e-commerce plugin** hai jo WordPress website ko online store mein convert karne ke liye use hota hai.
+
+**Simple:**
+
+```text
+WordPress = Website/CMS
+WooCommerce = E-commerce functionality
+```
+
+---
+
+# 30. Page Builders kya hote hain? (Elementor, WPBakery, Divi)
+
+**Answer:**
+
+Page Builders aise tools/plugins hote hain jo **visual/drag-and-drop interface** ke through webpages design karne mein help karte hain, bina har cheez manually code kiye.
+
+Examples:
+
+* Elementor
+* WPBakery
+* Divi
+
+**Simple:** Page Builder = **Drag & Drop se page design karna**
+
+---
+
+# 31. Elementor ka use kaise karte ho basic level pe?
+
+**Answer:**
+
+Basic process:
+
+1. Elementor install aur activate karo.
+2. Page create/edit karo.
+3. **Edit with Elementor** select karo.
+4. Widgets ko drag-and-drop karo.
+5. Text, images, buttons etc. add karo.
+6. Layout aur styling customize karo.
+7. Responsive settings check karo.
+8. Page publish/update karo.
+
+---
+
+# 32. Custom Fields kya hote hain?
+
+**Answer:**
+
+Custom Fields ka use post/page ke saath **additional custom information/data store** karne ke liye hota hai.
+
+Example:
+
+```text
+Post Title → iPhone 17
+Custom Field → Price = ₹80,000
+Custom Field → Brand = Apple
+```
+
+**Simple:** Custom Field = **Extra information store karna**
+
+---
+
+# 33. ACF (Advanced Custom Fields) plugin kya karta hai?
+
+**Answer:**
+
+ACF ek WordPress plugin hai jo **custom fields create aur manage** karna easy banata hai.
+
+Example:
+
+```text
+Project Name
+Project URL
+GitHub URL
+Technology
+Project Image
+```
+
+Ye portfolio, real-estate, products etc. jaise custom content ke liye useful hai.
+
+---
+
+# 34. WordPress REST API kya hai? (Basic idea)
+
+**Answer:**
+
+WordPress REST API ek interface hai jisse **HTTP requests ke through WordPress data access ya manage** kar sakte hain.
+
+Example:
+
+```text
+GET /wp-json/wp/v2/posts
+```
+
+Isse posts ka data JSON format mein mil sakta hai.
+
+Ye **React, Vue, mobile apps ya external applications** ke saath WordPress ko connect karne mein useful hai.
+
+**Simple:** REST API = **WordPress data ko other applications ke saath communicate karwana**
+
+---
+
+# 35. `wp-cron` kya hota hai?
+
+**Answer:**
+
+`wp-cron` WordPress ka **scheduled task system** hai. Iska use automatically scheduled tasks run karne ke liye hota hai.
+
+Examples:
+
+* Scheduled posts publish karna.
+* Scheduled maintenance tasks.
+* Plugin ke scheduled tasks.
+* Automatic cleanup tasks.
+
+> **Important:** `wp-cron` traditional server cron ki tarah continuously running process nahi hota; WordPress requests ke through scheduled tasks trigger karta hai.
+
+**Simple:** `wp-cron` = **WordPress mein scheduled/automatic tasks run karna**
